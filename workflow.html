@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>从形式主义大屏到 Standard Workflow</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: #f4f4f1;
+      color: #242424;
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        "PingFang SC",
+        "Microsoft YaHei",
+        sans-serif;
+      line-height: 1.9;
+    }
+
+    .container {
+      width: min(860px, calc(100% - 36px));
+      margin: 0 auto;
+    }
+
+    header {
+      padding: 90px 0 70px;
+      border-bottom: 1px solid #d8d8d4;
+    }
+
+    .tag {
+      color: #3d6258;
+      font-size: 13px;
+      letter-spacing: 0.12em;
+      font-weight: 700;
+    }
+
+    h1 {
+      margin: 18px 0 24px;
+      font-size: clamp(38px, 7vw, 64px);
+      line-height: 1.15;
+      letter-spacing: -0.045em;
+      font-weight: 750;
+    }
+
+    .intro {
+      max-width: 720px;
+      color: #666;
+      font-size: 19px;
+    }
+
+    main {
+      padding: 45px 0 100px;
+    }
+
+    h2 {
+      margin-top: 70px;
+      margin-bottom: 20px;
+      font-size: 30px;
+      line-height: 1.35;
+      letter-spacing: -0.02em;
+    }
+
+    h3 {
+      margin-top: 38px;
+      font-size: 21px;
+    }
+
+    p {
+      margin: 16px 0;
+    }
+
+    strong {
+      font-weight: 700;
+    }
+
+    .quote {
+      margin: 32px 0;
+      padding: 20px 24px;
+      border-left: 4px solid #3d6258;
+      background: #e9efec;
+    }
+
+    .diagram {
+      margin: 30px 0;
+      padding: 24px;
+      background: #ffffff;
+      border: 1px solid #dcdcd8;
+      border-radius: 10px;
+
+      white-space: pre-wrap;
+      font-family:
+        "SFMono-Regular",
+        Consolas,
+        "Liberation Mono",
+        monospace;
+
+      line-height: 1.7;
+    }
+
+    .card {
+      margin: 30px 0;
+      padding: 26px;
+      background: #ffffff;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+    }
+
+    table {
+      width: 100%;
+      margin: 30px 0;
+      border-collapse: collapse;
+      background: #fff;
+    }
+
+    th,
+    td {
+      padding: 13px 15px;
+      border: 1px solid #ddd;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: #f0f1ee;
+    }
+
+    footer {
+      padding: 40px 0 70px;
+      border-top: 1px solid #d8d8d4;
+      color: #777;
+      font-size: 14px;
+    }
+
+    @media (max-width: 600px) {
+
+      header {
+        padding-top: 55px;
+      }
+
+      h2 {
+        font-size: 25px;
+      }
+
+      .intro {
+        font-size: 17px;
+      }
+
+      .container {
+        width: calc(100% - 28px);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="container">
+
+    <div class="tag">
+      INDUSTRIAL SOFTWARE / WORKFLOW
+    </div>
+
+    <h1>
+      从形式主义大屏到<br>
+      Standard Workflow
+    </h1>
+
+    <p class="intro">
+      数据大屏曾经代表着“数字化”。
+      但当越来越多的企业拥有了大屏以后，
+      一个问题开始变得明显：
+      如果屏幕上的数字并不能改变任何人的行动，
+      那么这块屏幕到底创造了什么价值？
+    </p>
+
+  </div>
+</header>
+
+
+<main class="container">
+
+  <h2>一、大屏为什么容易变成形式主义</h2>
+
+  <p>
+    数据大屏本身没有问题。
+    问题在于，人们很容易把“看见数据”误认为“完成数字化”。
+  </p>
+
+  <p>
+    于是很多项目最后变成了这样的结构：
+  </p>
+
+  <div class="diagram">
+数据库
+  ↓
+统计
+  ↓
+可视化
+  ↓
+大屏
+  ↓
+结束
+  </div>
+
+  <p>
+    屏幕上可能有产量、良率、设备数量、运行率、
+    今日订单、能源消耗以及各种实时曲线。
+  </p>
+
+  <p>
+    从展示效果来看，一切都很完整。
+    但是现场人员仍然按照原来的方式工作。
+  </p>
+
+  <p>
+    设备出现异常以后，还是打电话；
+    维修还是靠经验；
+    生产计划还是通过 Excel；
+    操作员还是需要询问“下一步做什么”。
+  </p>
+
+  <div class="quote">
+    如果一个系统只能告诉你“现在发生了什么”，
+    却不能帮助你决定“接下来应该做什么”，
+    那么它更接近一个报表，而不是工作系统。
+  </div>
+
+
+  <h2>二、真正的问题不是数据，而是行动</h2>
+
+  <p>
+    假设一台生产设备的温度突然升高。
+  </p>
+
+  <p>
+    传统的大屏可能显示：
+  </p>
+
+  <div class="diagram">
+设备 07
+
+温度：185℃
+运行率：91%
+状态：运行
+  </div>
+
+  <p>
+    这当然有用。
+    但它仍然需要一个人看到这个数字以后自己思考：
+  </p>
+
+  <div class="diagram">
+185℃意味着什么？
+
+是否超过工艺标准？
+
+是不是传感器故障？
+
+需要停机吗？
+
+谁来处理？
+
+会不会影响当前订单？
+  </div>
+
+  <p>
+    大屏只是把信息交给了人，
+    却把真正困难的工作全部留给了人。
+  </p>
+
+
+  <h2>三、从 Dashboard 到 Workflow</h2>
+
+  <p>
+    真正的变化不是再增加几个图表，
+    而是把“数据”连接到“行动”。
+  </p>
+
+  <div class="diagram">
+设备数据
+   ↓
+状态判断
+   ↓
+异常识别
+   ↓
+影响判断
+   ↓
+下一步行动
+   ↓
+执行
+   ↓
+结果验证
+   ↓
+记录
+   ↓
+继续运行
+  </div>
+
+  <p>
+    这时候，大屏不再只是显示设备状态。
+    它开始成为整个工作流程的一部分。
+  </p>
+
+  <p>
+    这就是从 Dashboard 向 Standard Workflow
+    迈出的第一步。
+  </p>
+
+
+  <h2>四、什么是 Standard Workflow</h2>
+
+  <p>
+    Standard Workflow 可以简单理解为：
+  </p>
+
+  <div class="quote">
+    一套能够被重复执行、能够被系统理解、
+    能够被验证、能够留下记录的标准工作流程。
+  </div>
+
+  <p>
+    它不是一张流程图。
+  </p>
+
+  <p>
+    更准确地说，它是一组明确的：
+  </p>
+
+  <ul>
+    <li>状态</li>
+    <li>条件</li>
+    <li>动作</li>
+    <li>责任</li>
+    <li>异常处理</li>
+    <li>结果</li>
+  </ul>
+
+  <p>
+    例如设备生产一个产品：
+  </p>
+
+  <div class="diagram">
+Idle
+ ↓
+Preparing
+ ↓
+Ready
+ ↓
+Running
+ ↓
+Checking
+ ↓
+Completed
+ ↓
+Idle
+  </div>
+
+  <p>
+    任何阶段都可能进入异常状态：
+  </p>
+
+  <div class="diagram">
+Running
+   ↓
+Fault
+   ↓
+Recovery
+   ↓
+Ready
+  </div>
+
+  <p>
+    到这里，流程已经开始具备程序的性质。
+  </p>
+
+
+  <h2>五、流程真正标准化以后会发生什么</h2>
+
+  <p>
+    假设还是刚才的温度问题。
+  </p>
+
+  <p>
+    一个简单的大屏可能只是：
+  </p>
+
+  <div class="diagram">
+温度：185℃
+报警：HIGH
+  </div>
+
+  <p>
+    Standard Workflow 则可以进一步变成：
+  </p>
+
+  <div class="diagram">
+温度超过上限
+        ↓
+确认传感器数据有效
+        ↓
+进入「温度异常」
+        ↓
+降低加热功率
+        ↓
+记录异常事件
+        ↓
+等待 30 秒
+        ↓
+重新读取温度
+
+      /       \
+   恢复       未恢复
+    ↓            ↓
+继续生产       创建维修任务
+                 ↓
+              等待处理
+  </div>
+
+  <p>
+    这里最大的变化不是界面变漂亮了。
+  </p>
+
+  <p>
+    而是：
+  </p>
+
+  <div class="quote">
+    系统开始知道下一步应该发生什么。
+  </div>
+
+
+  <h2>六、真正有价值的大屏应该告诉人什么</h2>
+
+  <p>
+    一个操作员真正需要知道的通常不是几十个指标，
+    而是几个非常实际的问题：
+  </p>
+
+  <div class="card">
+
+    <p><strong>现在发生了什么？</strong></p>
+
+    <p><strong>为什么发生？</strong></p>
+
+    <p><strong>会造成什么影响？</strong></p>
+
+    <p><strong>下一步应该做什么？</strong></p>
+
+    <p><strong>谁负责处理？</strong></p>
+
+    <p><strong>处理以后恢复了吗？</strong></p>
+
+  </div>
+
+  <p>
+    这也是为什么真正成熟的工业系统，
+    最终往往不只是一个“大屏”。
+  </p>
+
+  <p>
+    它可能同时拥有：
+  </p>
+
+  <ul>
+    <li>车间监控屏</li>
+    <li>操作员 HMI</li>
+    <li>工程师 WPF 工具</li>
+    <li>Web 管理后台</li>
+    <li>移动端报警</li>
+    <li>自动任务系统</li>
+  </ul>
+
+  <p>
+    它们只是面对不同的人，
+    使用同一套底层 Workflow 和数据。
+  </p>
+
+
+  <h2>七、Workflow 最终必须进入现实世界</h2>
+
+  <p>
+    如果 Workflow 永远停留在网页上，
+    它仍然只是一个管理系统。
+  </p>
+
+  <p>
+    工业系统真正有意思的地方在于，
+    软件最终能够改变现实世界。
+  </p>
+
+  <div class="diagram">
+传感器
+  ↓
+PLC / 控制器
+  ↓
+C# 设备服务
+  ↓
+Workflow
+  ↓
+业务规则
+  ↓
+操作界面 / AI
+  ↓
+控制指令
+  ↓
+PLC / 机器人 / 执行器
+  ↓
+现实世界发生变化
+  ↓
+新的数据回来
+  ↓
+下一轮 Workflow
+  </div>
+
+  <p>
+    这实际上形成了一个闭环：
+  </p>
+
+  <div class="quote">
+    感知 → 判断 → 行动 → 验证 → 再行动
+  </div>
+
+
+  <h2>八、这也是工业软件真正的价值所在</h2>
+
+  <p>
+    当一个企业真正建立起这样的 Workflow，
+    它得到的就不再只是一个数据展示项目。
+  </p>
+
+  <p>
+    它得到的是一套能够持续运行的工作系统。
+  </p>
+
+  <table>
+
+    <tr>
+      <th>过去</th>
+      <th>Standard Workflow</th>
+    </tr>
+
+    <tr>
+      <td>员工凭经验操作</td>
+      <td>流程有明确状态</td>
+    </tr>
+
+    <tr>
+      <td>异常后打电话</td>
+      <td>异常自动形成任务</td>
+    </tr>
+
+    <tr>
+      <td>数据只用于展示</td>
+      <td>数据参与决策</td>
+    </tr>
+
+    <tr>
+      <td>流程写在文档里</td>
+      <td>流程进入系统</td>
+    </tr>
+
+    <tr>
+      <td>经验存在人的脑子里</td>
+      <td>经验沉淀成规则</td>
+    </tr>
+
+    <tr>
+      <td>做完以后很难追溯</td>
+      <td>每一步都有记录</td>
+    </tr>
+
+  </table>
+
+
+  <h2>九、最小的 Standard Workflow 不需要很复杂</h2>
+
+  <p>
+    甚至一块 Arduino 就可以开始。
+  </p>
+
+  <div class="diagram">
+C# Worker
+    ↓
+Serial / USB
+    ↓
+Arduino
+    ├── LED
+    ├── 按钮
+    ├── 温度传感器
+    └── 电机
+  </div>
+
+  <p>
+    然后给它定义一个最简单的流程：
+  </p>
+
+  <div class="diagram">
+Idle
+ ↓
+Preparing
+ ↓
+Running
+ ↓
+Checking
+ ↓
+Completed
+ ↓
+Idle
+
+任何阶段
+ ↓
+Fault
+ ↓
+Recovery
+ ↓
+Ready
+  </div>
+
+  <p>
+    再加入数据库、日志、WPF、ASP.NET Core，
+    这个小实验就已经开始拥有一个工业软件系统的基本结构。
+  </p>
+
+
+  <h2>十、所以大屏真正的终点不是“大屏”</h2>
+
+  <p>
+    如果只把大屏做得越来越漂亮，
+    最终得到的仍然可能只是一个更漂亮的大屏。
+  </p>
+
+  <p>
+    真正的方向应该是：
+  </p>
+
+  <div class="diagram">
+数据
+ ↓
+状态
+ ↓
+Workflow
+ ↓
+决策
+ ↓
+行动
+ ↓
+验证
+ ↓
+记录
+ ↓
+优化
+  </div>
+
+  <p>
+    大屏只是这个系统面向人的一个窗口。
+  </p>
+
+  <p>
+    它真正应该做的不是告诉人：
+  </p>
+
+  <div class="quote">
+    “这里有很多数据。”
+  </div>
+
+  <p>
+    而是告诉人：
+  </p>
+
+  <div class="quote">
+    “现在发生了什么。<br>
+    为什么发生。<br>
+    下一步应该做什么。<br>
+    做完以后有没有成功。”
+  </div>
+
+
+  <h2>结语</h2>
+
+  <p>
+    从形式主义流程走向 Standard Workflow，
+    本质上不是从“没有大屏”走向“有大屏”。
+  </p>
+
+  <p>
+    而是从：
+  </p>
+
+  <div class="diagram">
+信息展示
+  ↓
+信息管理
+  ↓
+流程管理
+  ↓
+流程执行
+  ↓
+闭环控制
+  </div>
+
+  <p>
+    当软件开始理解状态，
+    当系统开始知道下一步，
+    当设备能够执行动作，
+    当结果能够被验证，
+    一个企业的经验才真正开始沉淀成软件资产。
+  </p>
+
+  <div class="quote">
+    好的流程不是让屏幕看起来很先进。<br>
+    好的流程，是让正确的事情更容易发生，
+    让错误更容易被发现，
+    让每一次工作都成为下一次工作的基础。
+  </div>
+
+</main>
+
+
+<footer>
+  <div class="container">
+    Standard Workflow · Industrial Software Notes
+  </div>
+</footer>
+
+</body>
+</html>
