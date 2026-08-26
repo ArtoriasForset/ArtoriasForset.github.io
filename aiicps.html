@@ -1,0 +1,2539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Industrial Cyber-Physical System</title>
+
+    <meta name="description"
+          content="AI Industrial Cyber-Physical System — connecting physical industrial operations with intelligent software.">
+
+    <style>
+
+        :root {
+            --bg: #07090c;
+            --bg-soft: #0b0f14;
+            --panel: #10151c;
+            --panel-hover: #151b23;
+
+            --text: #f3f5f7;
+            --text-soft: #b2bbc5;
+            --text-muted: #727d89;
+
+            --line: #252d36;
+
+            --accent: #d7ff3f;
+            --accent-dark: #a8c92c;
+
+            --max-width: 1240px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--text);
+
+            font-family:
+                Inter,
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                Roboto,
+                Helvetica,
+                Arial,
+                sans-serif;
+
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .container {
+            width: min(var(--max-width), calc(100% - 64px));
+            margin: auto;
+        }
+
+        /* =========================
+           NAVIGATION
+        ========================= */
+
+        .nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+
+            height: 76px;
+
+            border-bottom: 1px solid var(--line);
+
+            background: rgba(7, 9, 12, 0.88);
+            backdrop-filter: blur(16px);
+        }
+
+        .nav-inner {
+            height: 100%;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .brand {
+            font-size: 14px;
+            font-weight: 700;
+
+            letter-spacing: 0.18em;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+
+            font-size: 12px;
+
+            color: var(--text-muted);
+        }
+
+        .nav-links a {
+            transition: color .2s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--text);
+        }
+
+        .language-button {
+            border: 1px solid var(--line);
+
+            background: transparent;
+            color: var(--text);
+
+            padding: 8px 13px;
+
+            font-size: 12px;
+
+            cursor: pointer;
+
+            border-radius: 3px;
+
+            transition: all .2s ease;
+        }
+
+        .language-button:hover {
+            border-color: var(--text-muted);
+        }
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            min-height: 720px;
+
+            display: flex;
+            align-items: center;
+
+            position: relative;
+
+            overflow: hidden;
+        }
+
+        .hero-grid {
+            position: absolute;
+            inset: 0;
+
+            background-image:
+                linear-gradient(
+                    rgba(255,255,255,.025) 1px,
+                    transparent 1px
+                ),
+                linear-gradient(
+                    90deg,
+                    rgba(255,255,255,.025) 1px,
+                    transparent 1px
+                );
+
+            background-size: 72px 72px;
+
+            mask-image:
+                linear-gradient(
+                    to bottom,
+                    black,
+                    transparent
+                );
+        }
+
+        .hero-content {
+            position: relative;
+
+            max-width: 950px;
+
+            padding: 120px 0;
+        }
+
+        .eyebrow {
+            margin-bottom: 28px;
+
+            color: var(--accent);
+
+            font-size: 12px;
+            font-weight: 700;
+
+            letter-spacing: .2em;
+        }
+
+        .hero h1 {
+            margin: 0 0 36px;
+
+            font-size: clamp(
+                56px,
+                8vw,
+                108px
+            );
+
+            line-height: .94;
+
+            letter-spacing: -.065em;
+
+            font-weight: 720;
+        }
+
+        .hero-description {
+            max-width: 760px;
+
+            margin-bottom: 42px;
+
+            color: var(--text-soft);
+
+            font-size: 20px;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 12px;
+
+            flex-wrap: wrap;
+        }
+
+        .button {
+            display: inline-flex;
+
+            align-items: center;
+            justify-content: center;
+
+            padding: 13px 19px;
+
+            border: 1px solid var(--line);
+
+            font-size: 12px;
+
+            transition:
+                transform .2s ease,
+                border-color .2s ease;
+        }
+
+        .button:hover {
+            transform: translateY(-2px);
+            border-color: var(--text-muted);
+        }
+
+        .button-primary {
+            background: var(--accent);
+            color: #0a0d08;
+
+            border-color: var(--accent);
+
+            font-weight: 700;
+        }
+
+        /* =========================
+           SECTIONS
+        ========================= */
+
+        section {
+            padding: 125px 0;
+
+            border-top: 1px solid var(--line);
+        }
+
+        .section-header {
+            display: grid;
+
+            grid-template-columns: 1fr 2fr;
+
+            gap: 60px;
+
+            margin-bottom: 65px;
+        }
+
+        .section-number {
+            color: var(--accent);
+
+            font-size: 11px;
+            font-weight: 700;
+
+            letter-spacing: .18em;
+        }
+
+        .section-title {
+            margin: 0;
+
+            font-size: clamp(
+                38px,
+                5vw,
+                66px
+            );
+
+            line-height: 1.02;
+
+            letter-spacing: -.05em;
+        }
+
+        .section-description {
+            max-width: 720px;
+
+            margin-top: 20px;
+
+            color: var(--text-muted);
+
+            font-size: 17px;
+        }
+
+        /* =========================
+           CAPABILITIES
+        ========================= */
+
+        .capabilities {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            border-top: 1px solid var(--line);
+            border-left: 1px solid var(--line);
+        }
+
+        .capability {
+            min-height: 270px;
+
+            padding: 34px;
+
+            border-right: 1px solid var(--line);
+            border-bottom: 1px solid var(--line);
+
+            transition:
+                background .25s ease;
+        }
+
+        .capability:hover {
+            background: var(--panel);
+        }
+
+        .capability-number {
+            color: var(--text-muted);
+
+            font-size: 11px;
+
+            letter-spacing: .15em;
+        }
+
+        .capability h3 {
+            margin: 60px 0 12px;
+
+            font-size: 23px;
+
+            letter-spacing: -.02em;
+        }
+
+        .capability p {
+            margin: 0;
+
+            color: var(--text-muted);
+
+            font-size: 14px;
+        }
+
+        /* =========================
+           ARCHITECTURE
+        ========================= */
+
+        .architecture {
+            padding: 34px;
+
+            background: var(--panel);
+
+            border: 1px solid var(--line);
+        }
+
+        .architecture-layer {
+            padding: 26px;
+
+            background: var(--bg-soft);
+
+            border: 1px solid var(--line);
+        }
+
+        .architecture-label {
+            margin-bottom: 16px;
+
+            color: var(--accent);
+
+            font-size: 10px;
+            font-weight: 700;
+
+            letter-spacing: .18em;
+        }
+
+        .architecture-nodes {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 10px;
+        }
+
+        .node {
+            padding: 10px 14px;
+
+            border: 1px solid #303944;
+
+            background: #0c1117;
+
+            font-size: 13px;
+        }
+
+        .architecture-arrow {
+            height: 35px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            color: var(--text-muted);
+        }
+
+        /* =========================
+           CONNECTIVITY
+        ========================= */
+
+        .protocol-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 12px;
+        }
+
+        .protocol {
+            min-height: 220px;
+
+            padding: 30px;
+
+            background: var(--panel);
+
+            border: 1px solid var(--line);
+
+            transition:
+                transform .2s ease,
+                background .2s ease;
+        }
+
+        .protocol:hover {
+            transform: translateY(-4px);
+
+            background: var(--panel-hover);
+        }
+
+        .protocol-name {
+            font-size: 21px;
+
+            font-weight: 650;
+        }
+
+        .protocol p {
+            margin-top: 35px;
+
+            color: var(--text-muted);
+
+            font-size: 13px;
+        }
+
+        /* =========================
+           PHYSICAL SYSTEMS
+        ========================= */
+
+        .device-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 12px;
+        }
+
+        .device {
+            min-height: 250px;
+
+            padding: 30px;
+
+            background: var(--panel);
+
+            border: 1px solid var(--line);
+        }
+
+        .device-category {
+            color: var(--text-muted);
+
+            font-size: 10px;
+
+            letter-spacing: .15em;
+        }
+
+        .device h3 {
+            margin: 55px 0 10px;
+
+            font-size: 20px;
+        }
+
+        .device p {
+            margin: 0;
+
+            color: var(--text-muted);
+
+            font-size: 13px;
+        }
+
+        /* =========================
+           AI
+        ========================= */
+
+        .ai-layout {
+            display: grid;
+
+            grid-template-columns:
+                1fr 1.4fr;
+
+            gap: 80px;
+        }
+
+        .ai-quote {
+            font-size: clamp(
+                34px,
+                5vw,
+                60px
+            );
+
+            line-height: 1.08;
+
+            letter-spacing: -.04em;
+        }
+
+        .accent {
+            color: var(--accent);
+        }
+
+        .ai-flow {
+            border-left: 1px solid var(--line);
+        }
+
+        .ai-step {
+            min-height: 82px;
+
+            padding: 22px 25px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 30px;
+
+            border-bottom: 1px solid var(--line);
+        }
+
+        .ai-step-title {
+            font-weight: 650;
+
+            white-space: nowrap;
+        }
+
+        .ai-step-description {
+            color: var(--text-muted);
+
+            font-size: 13px;
+
+            text-align: right;
+        }
+
+        /* =========================
+           AUTONOMY
+        ========================= */
+
+        .autonomy {
+            padding: 34px;
+
+            background: var(--panel);
+
+            border: 1px solid var(--line);
+        }
+
+        .autonomy-platform {
+            padding: 25px;
+
+            border: 1px solid var(--line);
+
+            background: var(--bg-soft);
+        }
+
+        .autonomy-devices {
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 10px;
+        }
+
+        .autonomy-device {
+            padding: 20px;
+
+            text-align: center;
+
+            border: 1px solid var(--line);
+
+            background: #0c1117;
+
+            font-size: 13px;
+        }
+
+        /* =========================
+           STACK
+        ========================= */
+
+        .stack {
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            border-top: 1px solid var(--line);
+            border-left: 1px solid var(--line);
+        }
+
+        .stack-item {
+            padding: 25px;
+
+            border-right: 1px solid var(--line);
+            border-bottom: 1px solid var(--line);
+        }
+
+        .stack-category {
+            display: block;
+
+            margin-bottom: 8px;
+
+            color: var(--accent);
+
+            font-size: 10px;
+
+            letter-spacing: .15em;
+        }
+
+        .stack-value {
+            font-size: 15px;
+
+            font-weight: 600;
+        }
+
+        /* =========================
+           FINAL
+        ========================= */
+
+        .final-message {
+            max-width: 1000px;
+
+            font-size: clamp(
+                38px,
+                6vw,
+                72px
+            );
+
+            line-height: 1.05;
+
+            letter-spacing: -.05em;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            padding: 70px 0;
+
+            border-top: 1px solid var(--line);
+
+            color: var(--text-muted);
+
+            font-size: 12px;
+        }
+
+        .footer-title {
+            margin-bottom: 14px;
+
+            color: var(--text);
+
+            font-size: 23px;
+
+            letter-spacing: -.02em;
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 900px) {
+
+            .nav-links {
+                display: none;
+            }
+
+            .container {
+                width: min(
+                    100% - 40px,
+                    var(--max-width)
+                );
+            }
+
+            .section-header {
+                grid-template-columns: 1fr;
+
+                gap: 25px;
+            }
+
+            .capabilities {
+                grid-template-columns: 1fr;
+            }
+
+            .protocol-grid,
+            .device-grid {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+            .ai-layout {
+                grid-template-columns: 1fr;
+
+                gap: 45px;
+            }
+
+            .autonomy-devices {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 560px) {
+
+            .hero {
+                min-height: 650px;
+            }
+
+            .hero h1 {
+                font-size: 57px;
+            }
+
+            .hero-description {
+                font-size: 17px;
+            }
+
+            section {
+                padding: 90px 0;
+            }
+
+            .protocol-grid,
+            .device-grid,
+            .autonomy-devices,
+            .stack {
+                grid-template-columns: 1fr;
+            }
+
+            .architecture {
+                padding: 18px;
+            }
+
+            .ai-step {
+                align-items: flex-start;
+
+                flex-direction: column;
+
+                gap: 8px;
+            }
+
+            .ai-step-description {
+                text-align: left;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     NAVIGATION
+========================= -->
+
+<nav class="nav">
+
+    <div class="container nav-inner">
+
+        <div class="brand">
+            AI·ICPS
+        </div>
+
+        <div class="nav-links">
+
+            <a href="#capabilities"
+               data-i18n="nav_capabilities">
+                CAPABILITIES
+            </a>
+
+            <a href="#architecture"
+               data-i18n="nav_architecture">
+                ARCHITECTURE
+            </a>
+
+            <a href="#connectivity"
+               data-i18n="nav_connectivity">
+                CONNECTIVITY
+            </a>
+
+            <a href="#industrial-ai"
+               data-i18n="nav_ai">
+                INDUSTRIAL AI
+            </a>
+
+        </div>
+
+        <button
+            id="languageButton"
+            class="language-button">
+
+            中文
+
+        </button>
+
+    </div>
+
+</nav>
+
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<header class="hero">
+
+    <div class="hero-grid"></div>
+
+    <div class="container">
+
+        <div class="hero-content">
+
+            <div
+                class="eyebrow"
+                data-i18n="eyebrow">
+
+                AI INDUSTRIAL
+                CYBER-PHYSICAL SYSTEM
+
+            </div>
+
+
+            <h1
+                data-i18n="hero_title">
+
+                Connect the physical world
+                to intelligent software.
+
+            </h1>
+
+
+            <p
+                class="hero-description"
+                data-i18n="hero_description">
+
+                An AI-native industrial platform
+                for connecting field I/O, PLCs,
+                motion systems, robots and
+                specialized equipment through
+                open industrial protocols and
+                intelligent orchestration.
+
+            </p>
+
+
+            <div class="hero-actions">
+
+                <a
+                    href="#architecture"
+                    class="button button-primary"
+                    data-i18n="explore_architecture">
+
+                    EXPLORE ARCHITECTURE
+
+                </a>
+
+
+                <a
+                    href="#connectivity"
+                    class="button"
+                    data-i18n="view_technology">
+
+                    VIEW TECHNOLOGY
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+
+<!-- =========================
+     CAPABILITIES
+========================= -->
+
+<section id="capabilities">
+
+    <div class="container">
+
+        <div class="section-header">
+
+            <div>
+
+                <div
+                    class="section-number"
+                    data-i18n="section_01">
+
+                    01 / CAPABILITIES
+
+                </div>
+
+            </div>
+
+
+            <div>
+
+                <h2
+                    class="section-title"
+                    data-i18n="capabilities_title">
+
+                    From industrial signals
+                    to intelligent operations.
+
+                </h2>
+
+
+                <p
+                    class="section-description"
+                    data-i18n="capabilities_description">
+
+                    A layered approach to connect
+                    physical assets, understand
+                    operational context and
+                    coordinate autonomous
+                    industrial systems.
+
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="capabilities">
+
+
+            <article class="capability">
+
+                <div class="capability-number">
+                    01
+                </div>
+
+                <h3 data-i18n="connect_title">
+                    Connect
+                </h3>
+
+                <p data-i18n="connect_description">
+
+                    Connect heterogeneous industrial
+                    assets across field I/O, PLCs,
+                    robots, CNC systems, sensors
+                    and actuators.
+
+                </p>
+
+            </article>
+
+
+            <article class="capability">
+
+                <div class="capability-number">
+                    02
+                </div>
+
+                <h3 data-i18n="understand_title">
+                    Understand
+                </h3>
+
+                <p data-i18n="understand_description">
+
+                    Transform raw signals and device
+                    data into structured industrial
+                    context, states, events and
+                    operational information.
+
+                </p>
+
+            </article>
+
+
+            <article class="capability">
+
+                <div class="capability-number">
+                    03
+                </div>
+
+                <h3 data-i18n="orchestrate_title">
+                    Orchestrate
+                </h3>
+
+                <p data-i18n="orchestrate_description">
+
+                    Coordinate autonomous equipment
+                    through software services and AI
+                    agents without replacing
+                    deterministic machine control.
+
+                </p>
+
+            </article>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     ARCHITECTURE
+========================= -->
+
+<section id="architecture">
+
+    <div class="container">
+
+        <div class="section-header">
+
+            <div>
+
+                <div
+                    class="section-number"
+                    data-i18n="section_02">
+
+                    02 / ARCHITECTURE
+
+                </div>
+
+            </div>
+
+
+            <div>
+
+                <h2
+                    class="section-title"
+                    data-i18n="architecture_title">
+
+                    A layered architecture
+                    for industrial intelligence.
+
+                </h2>
+
+
+                <p
+                    class="section-description"
+                    data-i18n="architecture_description">
+
+                    Separate physical control,
+                    industrial connectivity,
+                    application services and
+                    AI reasoning into clear
+                    engineering boundaries.
+
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="architecture">
+
+
+            <div class="architecture-layer">
+
+                <div
+                    class="architecture-label">
+
+                    INTELLIGENCE LAYER
+
+                </div>
+
+
+                <div class="architecture-nodes">
+
+                    <div class="node">
+                        AI Agents
+                    </div>
+
+                    <div class="node">
+                        RAG
+                    </div>
+
+                    <div class="node">
+                        Reasoning
+                    </div>
+
+                    <div class="node">
+                        Planning
+                    </div>
+
+                    <div class="node">
+                        Tool Calling
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="architecture-arrow">
+                ↓
+            </div>
+
+
+            <div class="architecture-layer">
+
+                <div
+                    class="architecture-label">
+
+                    APPLICATION LAYER
+
+                </div>
+
+
+                <div class="architecture-nodes">
+
+                    <div class="node">
+                        ASP.NET Core
+                    </div>
+
+                    <div class="node">
+                        C#
+                    </div>
+
+                    <div class="node">
+                        Device Management
+                    </div>
+
+                    <div class="node">
+                        REST API
+                    </div>
+
+                    <div class="node">
+                        Industrial Applications
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="architecture-arrow">
+                ↓
+            </div>
+
+
+            <div class="architecture-layer">
+
+                <div
+                    class="architecture-label">
+
+                    INDUSTRIAL DATA &amp;
+                    INTEGRATION
+
+                </div>
+
+
+                <div class="architecture-nodes">
+
+                    <div class="node">
+                        OPC UA
+                    </div>
+
+                    <div class="node">
+                        MQTT
+                    </div>
+
+                    <div class="node">
+                        Modbus TCP
+                    </div>
+
+                    <div class="node">
+                        Modbus RTU
+                    </div>
+
+                    <div class="node">
+                        REST / JSON
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="architecture-arrow">
+                ↓
+            </div>
+
+
+            <div class="architecture-layer">
+
+                <div
+                    class="architecture-label">
+
+                    PHYSICAL &amp;
+                    AUTOMATION SYSTEMS
+
+                </div>
+
+
+                <div class="architecture-nodes">
+
+                    <div class="node">
+                        Remote I/O
+                    </div>
+
+                    <div class="node">
+                        PLC
+                    </div>
+
+                    <div class="node">
+                        Servo
+                    </div>
+
+                    <div class="node">
+                        Robot
+                    </div>
+
+                    <div class="node">
+                        CNC
+                    </div>
+
+                    <div class="node">
+                        Vision
+                    </div>
+
+                    <div class="node">
+                        Sensors
+                    </div>
+
+                    <div class="node">
+                        Actuators
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     CONNECTIVITY
+========================= -->
+
+<section id="connectivity">
+
+    <div class="container">
+
+        <div class="section-header">
+
+            <div>
+
+                <div
+                    class="section-number"
+                    data-i18n="section_03">
+
+                    03 / CONNECTIVITY
+
+                </div>
+
+            </div>
+
+
+            <div>
+
+                <h2
+                    class="section-title"
+                    data-i18n="connectivity_title">
+
+                    Open connectivity.
+                    Industrial by design.
+
+                </h2>
+
+
+                <p
+                    class="section-description"
+                    data-i18n="connectivity_description">
+
+                    Use the right protocol for
+                    the right layer: field
+                    communication, device integration,
+                    telemetry and industrial
+                    information exchange.
+
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="protocol-grid">
+
+
+            <article class="protocol">
+
+                <div class="protocol-name">
+                    OPC UA
+                </div>
+
+                <p data-i18n="opc_description">
+
+                    Information modeling,
+                    structured device data
+                    and interoperable
+                    industrial services.
+
+                </p>
+
+            </article>
+
+
+            <article class="protocol">
+
+                <div class="protocol-name">
+                    MQTT
+                </div>
+
+                <p data-i18n="mqtt_description">
+
+                    Event-driven telemetry
+                    and publish/subscribe
+                    connectivity for
+                    distributed systems.
+
+                </p>
+
+            </article>
+
+
+            <article class="protocol">
+
+                <div class="protocol-name">
+                    Modbus
+                </div>
+
+                <p data-i18n="modbus_description">
+
+                    Practical industrial
+                    data acquisition over
+                    TCP/IP and serial
+                    RTU networks.
+
+                </p>
+
+            </article>
+
+
+            <article class="protocol">
+
+                <div class="protocol-name">
+                    REST / JSON
+                </div>
+
+                <p data-i18n="rest_description">
+
+                    Lightweight northbound
+                    integration between
+                    industrial devices
+                    and software services.
+
+                </p>
+
+            </article>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     PHYSICAL SYSTEMS
+========================= -->
+
+<section>
+
+    <div class="container">
+
+        <div class="section-header">
+
+            <div>
+
+                <div
+                    class="section-number"
+                    data-i18n="section_04">
+
+                    04 / PHYSICAL SYSTEMS
+
+                </div>
+
+            </div>
+
+
+            <div>
+
+                <h2
+                    class="section-title"
+                    data-i18n="physical_title">
+
+                    Built for the physical world.
+
+                </h2>
+
+
+                <p
+                    class="section-description"
+                    data-i18n="physical_description">
+
+                    Connect equipment according
+                    to its engineering role rather
+                    than forcing every device into
+                    the same control model.
+
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="device-grid">
+
+
+            <article class="device">
+
+                <div class="device-category">
+                    FIELD I/O
+                </div>
+
+                <h3>
+                    Remote I/O
+                </h3>
+
+                <p data-i18n="remote_io">
+
+                    DI · DO · AI · RS485<br>
+                    Sensing, switching and
+                    field-level control.
+
+                </p>
+
+            </article>
+
+
+            <article class="device">
+
+                <div class="device-category">
+                    AUTOMATION
+                </div>
+
+                <h3>
+                    PLC
+                </h3>
+
+                <p data-i18n="plc">
+
+                    Logic · Sequence · Interlock<br>
+                    Deterministic machine control.
+
+                </p>
+
+            </article>
+
+
+            <article class="device">
+
+                <div class="device-category">
+                    MOTION
+                </div>
+
+                <h3>
+                    Servo
+                </h3>
+
+                <p data-i18n="servo">
+
+                    Position · Velocity · Torque<br>
+                    Precision motion and
+                    machine dynamics.
+
+                </p>
+
+            </article>
+
+
+            <article class="device">
+
+                <div class="device-category">
+                    SPECIALIZED EQUIPMENT
+                </div>
+
+                <h3>
+                    Robot · CNC · Vision
+                </h3>
+
+                <p data-i18n="specialized">
+
+                    Autonomous,
+                    function-specific
+                    industrial operations.
+
+                </p>
+
+            </article>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     INDUSTRIAL AI
+========================= -->
+
+<section id="industrial-ai">
+
+    <div class="container">
+
+        <div class="section-header">
+
+            <div>
+
+                <div
+                    class="section-number"
+                    data-i18n="section_05">
+
+                    05 / INDUSTRIAL AI
+
+                </div>
+
+            </div>
+
+
+            <div>
+
+                <h2
+                    class="section-title"
+                    data-i18n="industrial_ai_title">
+
+                    AI that understands
+                    industrial context.
+
+                </h2>
+
+
+                <p
+                    class="section-description"
+                    data-i18n="industrial_ai_description">
+
+                    Move beyond generic chat.
+                    Industrial agents observe
+                    equipment state, reason over
+                    operational context, invoke
+                    approved tools and verify outcomes.
+
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="ai-layout">
+
+
+            <div>
+
+                <div
+                    class="ai-quote"
+                    data-i18n="ai_quote">
+
+                    “The packaging line has stopped.
+                    <span class="accent">
+                        Determine why.
+                    </span>”
+
+                </div>
+
+            </div>
+
+
+
+            <div class="ai-flow">
+
+
+                <div class="ai-step">
+
+                    <div class="ai-step-title">
+                        01 · Observe
+                    </div>
+
+                    <div
+                        class="ai-step-description"
+                        data-i18n="observe">
+
+                        Query PLC state
+                        and field telemetry
+
+                    </div>
+
+                </div>
+
+
+                <div class="ai-step">
+
+                    <div class="ai-step-title">
+                        02 · Understand
+                    </div>
+
+                    <div
+                        class="ai-step-description"
+                        data-i18n="understand">
+
+                        Correlate alarms,
+                        events and
+                        equipment context
+
+                    </div>
+
+                </div>
+
+
+                <div class="ai-step">
+
+                    <div class="ai-step-title">
+                        03 · Reason
+                    </div>
+
+                    <div
+                        class="ai-step-description"
+                        data-i18n="reason">
+
+                        Identify probable
+                        causes and constraints
+
+                    </div>
+
+                </div>
+
+
+                <div class="ai-step">
+
+                    <div class="ai-step-title">
+                        04 · Act
+                    </div>
+
+                    <div
+                        class="ai-step-description"
+                        data-i18n="act">
+
+                        Invoke approved industrial
+                        tools or recommend action
+
+                    </div>
+
+                </div>
+
+
+                <div class="ai-step">
+
+                    <div class="ai-step-title">
+                        05 · Verify
+                    </div>
+
+                    <div
+                        class="ai-step-description"
+                        data-i18n="verify">
+
+                        Confirm the physical system
+                        reached the expected state
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     DEVICE AUTONOMY
+========================= -->
+
+<section>
+
+    <div class="container">
+
+        <div class="section-header">
+
+            <div>
+
+                <div
+                    class="section-number"
+                    data-i18n="section_06">
+
+                    06 / DEVICE AUTONOMY
+
+                </div>
+
+            </div>
+
+
+            <div>
+
+                <h2
+                    class="section-title"
+                    data-i18n="autonomy_title">
+
+                    Autonomous devices.
+                    Coordinated intelligence.
+
+                </h2>
+
+
+                <p
+                    class="section-description"
+                    data-i18n="autonomy_description">
+
+                    The platform does not replace
+                    industrial controllers.
+                    It connects and orchestrates
+                    equipment that already owns
+                    its specialized control logic.
+
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="autonomy">
+
+
+            <div class="autonomy-platform">
+
+                <div
+                    class="architecture-label">
+
+                    INDUSTRIAL PLATFORM
+
+                </div>
+
+
+                <div class="architecture-nodes">
+
+                    <div class="node">
+                        Task Coordination
+                    </div>
+
+                    <div class="node">
+                        Asset Context
+                    </div>
+
+                    <div class="node">
+                        AI Agents
+                    </div>
+
+                    <div class="node">
+                        Data &amp; Events
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="architecture-arrow">
+                ↓
+            </div>
+
+
+            <div class="autonomy-devices">
+
+                <div class="autonomy-device">
+                    PLC<br>
+                    <small>
+                        Deterministic Control
+                    </small>
+                </div>
+
+                <div class="autonomy-device">
+                    Robot<br>
+                    <small>
+                        Motion & Programs
+                    </small>
+                </div>
+
+                <div class="autonomy-device">
+                    CNC<br>
+                    <small>
+                        Machining
+                    </small>
+                </div>
+
+                <div class="autonomy-device">
+                    Remote I/O<br>
+                    <small>
+                        Field Signals
+                    </small>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     TECHNOLOGY STACK
+========================= -->
+
+<section>
+
+    <div class="container">
+
+        <div class="section-header">
+
+            <div>
+
+                <div
+                    class="section-number"
+                    data-i18n="section_07">
+
+                    07 / TECHNOLOGY
+
+                </div>
+
+            </div>
+
+
+            <div>
+
+                <h2
+                    class="section-title"
+                    data-i18n="technology_title">
+
+                    A developer-first
+                    industrial stack.
+
+                </h2>
+
+
+                <p
+                    class="section-description"
+                    data-i18n="technology_description">
+
+                    Built around open protocols,
+                    mainstream software engineering
+                    and industrial automation concepts.
+
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="stack">
+
+
+            <div class="stack-item">
+
+                <span
+                    class="stack-category">
+
+                    INTELLIGENCE
+
+                </span>
+
+                <div class="stack-value">
+                    Microsoft Agent Framework ·
+                    LLM · RAG
+                </div>
+
+            </div>
+
+
+            <div class="stack-item">
+
+                <span
+                    class="stack-category">
+
+                    APPLICATION
+
+                </span>
+
+                <div class="stack-value">
+                    ASP.NET Core · C# · REST API
+                </div>
+
+            </div>
+
+
+            <div class="stack-item">
+
+                <span
+                    class="stack-category">
+
+                    DATA
+
+                </span>
+
+                <div class="stack-value">
+                    PostgreSQL · Events · Telemetry
+                </div>
+
+            </div>
+
+
+            <div class="stack-item">
+
+                <span
+                    class="stack-category">
+
+                    CONNECTIVITY
+
+                </span>
+
+                <div class="stack-value">
+                    OPC UA · MQTT ·
+                    Modbus TCP/RTU
+                </div>
+
+            </div>
+
+
+            <div class="stack-item">
+
+                <span
+                    class="stack-category">
+
+                    AUTOMATION
+
+                </span>
+
+                <div class="stack-value">
+                    PLC · Remote I/O ·
+                    Servo · Motion
+                </div>
+
+            </div>
+
+
+            <div class="stack-item">
+
+                <span
+                    class="stack-category">
+
+                    PHYSICAL
+
+                </span>
+
+                <div class="stack-value">
+                    Sensors · Actuators ·
+                    Machines · Robots
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     FINAL
+========================= -->
+
+<section>
+
+    <div class="container">
+
+        <div
+            class="final-message"
+            data-i18n="final_message">
+
+            From <span class="accent">signals</span>
+            to systems.<br>
+
+            From systems to
+            <span class="accent">
+                intelligence.
+            </span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <div class="container">
+
+        <div class="footer-title">
+            AI Industrial Cyber-Physical System
+        </div>
+
+
+        <div data-i18n="footer_description">
+
+            A conceptual industrial platform
+            architecture for connecting physical
+            operations with intelligent software.
+
+        </div>
+
+
+        <div style="margin-top:28px">
+
+            C# · ASP.NET Core · OPC UA ·
+            MQTT · Modbus · AI
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+
+<!-- =========================
+     LANGUAGE SYSTEM
+========================= -->
+
+<script>
+
+const translations = {
+
+    en: {
+
+        nav_capabilities: "CAPABILITIES",
+        nav_architecture: "ARCHITECTURE",
+        nav_connectivity: "CONNECTIVITY",
+        nav_ai: "INDUSTRIAL AI",
+
+        eyebrow:
+            "AI INDUSTRIAL CYBER-PHYSICAL SYSTEM",
+
+        hero_title:
+            "Connect the physical world to intelligent software.",
+
+        hero_description:
+            "An AI-native industrial platform for connecting field I/O, PLCs, motion systems, robots and specialized equipment through open industrial protocols and intelligent orchestration.",
+
+        explore_architecture:
+            "EXPLORE ARCHITECTURE",
+
+        view_technology:
+            "VIEW TECHNOLOGY",
+
+
+        section_01:
+            "01 / CAPABILITIES",
+
+        capabilities_title:
+            "From industrial signals to intelligent operations.",
+
+        capabilities_description:
+            "A layered approach to connect physical assets, understand operational context and coordinate autonomous industrial systems.",
+
+
+        connect_title:
+            "Connect",
+
+        connect_description:
+            "Connect heterogeneous industrial assets across field I/O, PLCs, robots, CNC systems, sensors and actuators.",
+
+
+        understand_title:
+            "Understand",
+
+        understand_description:
+            "Transform raw signals and device data into structured industrial context, states, events and operational information.",
+
+
+        orchestrate_title:
+            "Orchestrate",
+
+        orchestrate_description:
+            "Coordinate autonomous equipment through software services and AI agents without replacing deterministic machine control.",
+
+
+        section_02:
+            "02 / ARCHITECTURE",
+
+        architecture_title:
+            "A layered architecture for industrial intelligence.",
+
+        architecture_description:
+            "Separate physical control, industrial connectivity, application services and AI reasoning into clear engineering boundaries.",
+
+
+        section_03:
+            "03 / CONNECTIVITY",
+
+        connectivity_title:
+            "Open connectivity. Industrial by design.",
+
+        connectivity_description:
+            "Use the right protocol for the right layer: field communication, device integration, telemetry and industrial information exchange.",
+
+
+        opc_description:
+            "Information modeling, structured device data and interoperable industrial services.",
+
+        mqtt_description:
+            "Event-driven telemetry and publish/subscribe connectivity for distributed systems.",
+
+        modbus_description:
+            "Practical industrial data acquisition over TCP/IP and serial RTU networks.",
+
+        rest_description:
+            "Lightweight northbound integration between industrial devices and software services.",
+
+
+        section_04:
+            "04 / PHYSICAL SYSTEMS",
+
+        physical_title:
+            "Built for the physical world.",
+
+        physical_description:
+            "Connect equipment according to its engineering role rather than forcing every device into the same control model.",
+
+
+        remote_io:
+            "DI · DO · AI · RS485<br>Sensing, switching and field-level control.",
+
+        plc:
+            "Logic · Sequence · Interlock<br>Deterministic machine control.",
+
+        servo:
+            "Position · Velocity · Torque<br>Precision motion and machine dynamics.",
+
+        specialized:
+            "Autonomous, function-specific industrial operations.",
+
+
+        section_05:
+            "05 / INDUSTRIAL AI",
+
+        industrial_ai_title:
+            "AI that understands industrial context.",
+
+        industrial_ai_description:
+            "Move beyond generic chat. Industrial agents observe equipment state, reason over operational context, invoke approved tools and verify outcomes.",
+
+        ai_quote:
+            "“The packaging line has stopped. <span class='accent'>Determine why.</span>”",
+
+        observe:
+            "Query PLC state and field telemetry",
+
+        understand:
+            "Correlate alarms, events and equipment context",
+
+        reason:
+            "Identify probable causes and constraints",
+
+        act:
+            "Invoke approved industrial tools or recommend action",
+
+        verify:
+            "Confirm the physical system reached the expected state",
+
+
+        section_06:
+            "06 / DEVICE AUTONOMY",
+
+        autonomy_title:
+            "Autonomous devices. Coordinated intelligence.",
+
+        autonomy_description:
+            "The platform does not replace industrial controllers. It connects and orchestrates equipment that already owns its specialized control logic.",
+
+
+        section_07:
+            "07 / TECHNOLOGY",
+
+        technology_title:
+            "A developer-first industrial stack.",
+
+        technology_description:
+            "Built around open protocols, mainstream software engineering and industrial automation concepts.",
+
+
+        final_message:
+            "From <span class='accent'>signals</span> to systems.<br>From systems to <span class='accent'>intelligence.</span>",
+
+
+        footer_description:
+            "A conceptual industrial platform architecture for connecting physical operations with intelligent software."
+
+    },
+
+
+    zh: {
+
+        nav_capabilities:
+            "核心能力",
+
+        nav_architecture:
+            "系统架构",
+
+        nav_connectivity:
+            "工业连接",
+
+        nav_ai:
+            "工业 AI",
+
+
+        eyebrow:
+            "AI 工业信息物理系统",
+
+        hero_title:
+            "连接物理世界与智能软件。",
+
+        hero_description:
+            "一个 AI 原生工业平台，通过开放工业协议连接现场 I/O、PLC、运动系统、机器人及专业工业设备，并通过智能编排实现跨设备协同。",
+
+        explore_architecture:
+            "探索系统架构",
+
+        view_technology:
+            "查看技术体系",
+
+
+        section_01:
+            "01 / 核心能力",
+
+        capabilities_title:
+            "从工业信号到智能运营。",
+
+        capabilities_description:
+            "以分层架构连接物理资产、理解运行上下文，并协调具备自治能力的工业系统。",
+
+
+        connect_title:
+            "连接",
+
+        connect_description:
+            "连接现场 I/O、PLC、机器人、CNC、传感器和执行器等异构工业资产。",
+
+
+        understand_title:
+            "理解",
+
+        understand_description:
+            "将原始信号和设备数据转化为结构化的工业状态、事件和运行上下文。",
+
+
+        orchestrate_title:
+            "编排",
+
+        orchestrate_description:
+            "通过软件服务和 AI Agent 协调自治设备，而不取代确定性的机器控制。",
+
+
+        section_02:
+            "02 / 系统架构",
+
+        architecture_title:
+            "面向工业智能的分层架构。",
+
+        architecture_description:
+            "将物理控制、工业连接、应用服务和 AI 推理划分为清晰的工程边界。",
+
+
+        section_03:
+            "03 / 工业连接",
+
+        connectivity_title:
+            "开放连接，为工业而生。",
+
+        connectivity_description:
+            "让不同层使用合适的协议：现场通信、设备集成、遥测以及工业信息交换。",
+
+
+        opc_description:
+            "信息建模、结构化设备数据以及可互操作的工业服务。",
+
+        mqtt_description:
+            "面向分布式系统的事件驱动遥测与发布/订阅通信。",
+
+        modbus_description:
+            "通过 TCP/IP 与串行 RTU 网络进行实用的工业数据采集。",
+
+        rest_description:
+            "工业设备与软件服务之间的轻量级北向集成。",
+
+
+        section_04:
+            "04 / 物理系统",
+
+        physical_title:
+            "面向真实物理世界。",
+
+        physical_description:
+            "按照设备的工程角色进行连接，而不是强迫所有设备采用同一种控制模型。",
+
+
+        remote_io:
+            "DI · DO · AI · RS485<br>感知、开关与现场级控制。",
+
+        plc:
+            "逻辑 · 顺序 · 联锁<br>确定性的机器控制。",
+
+        servo:
+            "位置 · 速度 · 转矩<br>精密运动与机器动态控制。",
+
+        specialized:
+            "自治的、面向特定功能的工业作业。",
+
+
+        section_05:
+            "05 / 工业 AI",
+
+        industrial_ai_title:
+            "理解工业上下文的 AI。",
+
+        industrial_ai_description:
+            "超越通用聊天：工业 Agent 感知设备状态，结合运行上下文进行推理，调用经过授权的工具，并验证执行结果。",
+
+        ai_quote:
+            "“包装线停止了。<span class='accent'>找出原因。</span>”",
+
+        observe:
+            "查询 PLC 状态和现场遥测",
+
+        understand:
+            "关联报警、事件和设备上下文",
+
+        reason:
+            "识别可能原因与运行约束",
+
+        act:
+            "调用经过授权的工业工具或提出操作建议",
+
+        verify:
+            "确认物理系统达到预期状态",
+
+
+        section_06:
+            "06 / 设备自治",
+
+        autonomy_title:
+            "设备自治，智能协同。",
+
+        autonomy_description:
+            "平台不取代工业控制器，而是连接并协调那些已经拥有专业控制逻辑的设备。",
+
+
+        section_07:
+            "07 / 技术体系",
+
+        technology_title:
+            "开发者优先的工业技术栈。",
+
+        technology_description:
+            "建立在开放协议、主流软件工程和工业自动化知识体系之上。",
+
+
+        final_message:
+            "从 <span class='accent'>信号</span> 到系统。<br>从系统到 <span class='accent'>智能。</span>",
+
+
+        footer_description:
+            "一个用于连接物理生产与智能软件的概念性工业平台架构。"
+
+    }
+
+};
+
+
+
+let currentLanguage =
+    localStorage.getItem("icps-language") || "en";
+
+
+
+function applyLanguage() {
+
+    const elements =
+        document.querySelectorAll("[data-i18n]");
+
+
+    elements.forEach(element => {
+
+        const key =
+            element.getAttribute("data-i18n");
+
+
+        if (
+            translations[currentLanguage] &&
+            translations[currentLanguage][key]
+        ) {
+
+            element.innerHTML =
+                translations[currentLanguage][key];
+
+        }
+
+    });
+
+
+    document.documentElement.lang =
+        currentLanguage === "zh"
+            ? "zh-CN"
+            : "en";
+
+
+    document.getElementById(
+        "languageButton"
+    ).textContent =
+        currentLanguage === "en"
+            ? "中文"
+            : "EN";
+
+
+    localStorage.setItem(
+        "icps-language",
+        currentLanguage
+    );
+
+}
+
+
+
+document
+    .getElementById("languageButton")
+    .addEventListener("click", () => {
+
+        currentLanguage =
+            currentLanguage === "en"
+                ? "zh"
+                : "en";
+
+        applyLanguage();
+
+    });
+
+
+
+applyLanguage();
+
+</script>
+
+
+</body>
+</html>
