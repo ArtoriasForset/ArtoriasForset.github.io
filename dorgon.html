@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>千万年前的暴龙</title>
+
+<style>
+
+html,body{
+    margin:0;
+    width:100%;
+    height:100%;
+    overflow:hidden;
+}
+
+body{
+
+    background:
+    linear-gradient(
+        to bottom,
+        #44586e 0%,
+        #76889d 15%,
+        #c5c2b5 45%,
+        #564f43 100%
+    );
+
+    animation:quake .18s infinite alternate;
+}
+
+/* ==================== */
+/* 阳光 */
+/* ==================== */
+
+.sun{
+
+    position:absolute;
+    top:-10%;
+    left:58%;
+
+    width:700px;
+    height:700px;
+
+    background:
+    radial-gradient(
+        rgba(255,255,230,.35),
+        transparent 70%
+    );
+
+    filter:blur(80px);
+}
+
+/* ==================== */
+/* 雾 */
+/* ==================== */
+
+.mist{
+
+    position:absolute;
+    inset:0;
+
+    background:
+    radial-gradient(
+        circle at 50% 45%,
+        rgba(255,255,255,.25),
+        transparent 55%
+    );
+
+    filter:blur(80px);
+}
+
+/* ==================== */
+/* 地平线 */
+/* ==================== */
+
+.horizon{
+
+    position:absolute;
+
+    bottom:35%;
+
+    width:100%;
+    height:2px;
+
+    background:rgba(255,255,255,.15);
+}
+
+/* ==================== */
+/* 森林 */
+/* ==================== */
+
+.forest{
+
+    position:absolute;
+
+    bottom:28%;
+
+    width:100%;
+
+    height:55%;
+
+    display:flex;
+
+    justify-content:space-around;
+
+    align-items:flex-end;
+}
+
+.tree{
+
+    width:10px;
+
+    background:#171e18;
+
+    position:relative;
+
+    border-radius:10px;
+}
+
+.tree:before{
+
+    content:'';
+
+    position:absolute;
+
+    left:-35px;
+
+    bottom:70%;
+
+    width:80px;
+
+    height:170px;
+
+    border-radius:50%;
+
+    background:
+    radial-gradient(
+        ellipse,
+        #344832,
+        #142015
+    );
+}
+
+.layer2{
+
+    opacity:.55;
+
+    transform:scale(1.2);
+
+    filter:blur(2px);
+}
+
+.layer3{
+
+    opacity:.35;
+
+    transform:scale(1.4);
+
+    filter:blur(5px);
+}
+
+/* ==================== */
+/* 翼龙 */
+/* ==================== */
+
+.pterosaur{
+
+    position:absolute;
+
+    top:22%;
+    left:32%;
+
+    width:28px;
+    height:6px;
+
+    background:#111;
+
+    clip-path:
+    polygon(
+    0 50%,
+    40% 0,
+    50% 50%,
+    60% 0,
+    100% 50%,
+    60% 70%,
+    50% 50%,
+    40% 70%
+    );
+
+    opacity:.5;
+
+    animation:
+    fly 18s linear infinite;
+}
+
+@keyframes fly{
+
+    from{
+        left:-10%;
+    }
+
+    to{
+        left:110%;
+    }
+}
+
+/* ==================== */
+/* 尘土 */
+/* ==================== */
+
+.dust{
+
+    position:absolute;
+
+    left:52%;
+    bottom:28%;
+
+    width:250px;
+    height:80px;
+
+    background:
+
+    radial-gradient(
+        rgba(200,185,150,.5),
+        transparent 70%
+    );
+
+    filter:blur(20px);
+
+    animation:dust 1s infinite;
+}
+
+@keyframes dust{
+
+    0%{
+        opacity:.2;
+        transform:scale(.7);
+    }
+
+    50%{
+        opacity:.7;
+    }
+
+    100%{
+        opacity:.3;
+        transform:scale(1.25);
+    }
+}
+
+/* ==================== */
+/* TREX */
+/* ==================== */
+
+.trex{
+
+    position:absolute;
+
+    left:53%;
+    bottom:32%;
+
+    width:260px;
+    height:130px;
+
+    animation:run 1s infinite linear;
+}
+
+.body{
+
+    position:absolute;
+
+    left:70px;
+    top:25px;
+
+    width:130px;
+    height:65px;
+
+    background:#111;
+
+    border-radius:80px;
+
+    animation:
+    breath 2s ease-in-out infinite;
+}
+
+.neck{
+
+    position:absolute;
+
+    right:65px;
+    top:18px;
+
+    width:45px;
+    height:20px;
+
+    background:#111;
+
+    transform:rotate(-30deg);
+}
+
+.head{
+
+    position:absolute;
+
+    right:20px;
+    top:0;
+
+    width:55px;
+    height:32px;
+
+    background:#111;
+
+    border-radius:50%;
+}
+
+.jaw{
+
+    position:absolute;
+
+    right:-5px;
+    top:20px;
+
+    width:40px;
+    height:12px;
+
+    background:#111;
+
+    clip-path:
+    polygon(
+    0 0,
+    100% 50%,
+    0 100%
+    );
+
+    transform:rotate(6deg);
+}
+
+.tail{
+
+    position:absolute;
+
+    left:-40px;
+    top:40px;
+
+    width:170px;
+    height:18px;
+
+    background:#111;
+
+    border-radius:20px;
+
+    transform-origin:right center;
+
+    animation:
+    tailmove .8s infinite alternate;
+}
+
+.arm{
+
+    position:absolute;
+
+    width:24px;
+    height:5px;
+
+    background:#111;
+
+    right:90px;
+}
+
+.arm1{
+
+    top:48px;
+
+    transform:
+    rotate(25deg);
+}
+
+.arm2{
+
+    top:58px;
+
+    transform:
+    rotate(-10deg);
+}
+
+.leg{
+
+    position:absolute;
+
+    bottom:-58px;
+
+    width:18px;
+    height:76px;
+
+    background:#111;
+
+    transform-origin:top center;
+}
+
+.leg1{
+
+    left:110px;
+
+    animation:
+    legA .45s infinite alternate;
+}
+
+.leg2{
+
+    left:165px;
+
+    animation:
+    legB .45s infinite alternate;
+}
+
+/* ==================== */
+
+@keyframes run{
+
+    0%{transform:translateY(0)}
+
+    50%{transform:translateY(-3px)}
+
+    100%{transform:translateY(0)}
+}
+
+@keyframes breath{
+
+    0%{
+        transform:scaleY(1);
+    }
+
+    50%{
+        transform:scaleY(1.04);
+    }
+
+    100%{
+        transform:scaleY(1);
+    }
+}
+
+@keyframes legA{
+
+    from{
+        transform:rotate(28deg);
+    }
+
+    to{
+        transform:rotate(-28deg);
+    }
+}
+
+@keyframes legB{
+
+    from{
+        transform:rotate(-28deg);
+    }
+
+    to{
+        transform:rotate(28deg);
+    }
+}
+
+@keyframes tailmove{
+
+    from{
+        transform:rotate(-10deg);
+    }
+
+    to{
+        transform:rotate(0deg);
+    }
+}
+
+@keyframes quake{
+
+    from{
+        transform:translateX(0);
+    }
+
+    to{
+        transform:translateX(1px);
+    }
+}
+
+/* ==================== */
+
+.caption{
+
+    position:absolute;
+
+    bottom:40px;
+
+    width:100%;
+
+    text-align:center;
+
+    color:white;
+
+    font-size:28px;
+
+    letter-spacing:3px;
+
+    text-shadow:
+    0 0 20px rgba(255,255,255,.5);
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="sun"></div>
+
+<div class="mist"></div>
+
+<div class="horizon"></div>
+
+<div class="pterosaur"></div>
+
+<!-- 深景森林 -->
+
+<div class="forest layer3">
+<div class="tree" style="height:420px"></div>
+<div class="tree" style="height:350px"></div>
+<div class="tree" style="height:460px"></div>
+<div class="tree" style="height:430px"></div>
+<div class="tree" style="height:500px"></div>
+</div>
+
+<div class="forest layer2">
+<div class="tree" style="height:350px"></div>
+<div class="tree" style="height:450px"></div>
+<div class="tree" style="height:390px"></div>
+<div class="tree" style="height:510px"></div>
+<div class="tree" style="height:420px"></div>
+</div>
+
+<div class="forest">
+<div class="tree" style="height:300px"></div>
+<div class="tree" style="height:450px"></div>
+<div class="tree" style="height:360px"></div>
+<div class="tree" style="height:520px"></div>
+<div class="tree" style="height:390px"></div>
+</div>
+
+<!-- 扬尘 -->
+
+<div class="dust"></div>
+
+<!-- TREX -->
+
+<div class="trex">
+
+    <div class="tail"></div>
+
+    <div class="body"></div>
+
+    <div class="neck"></div>
+
+    <div class="head"></div>
+
+    <div class="jaw"></div>
+
+    <div class="arm arm1"></div>
+    <div class="arm arm2"></div>
+
+    <div class="leg leg1"></div>
+    <div class="leg leg2"></div>
+
+</div>
+
+<div class="caption">
+千万年前，透过百米高的树林，<br>
+天际线上一头暴龙正在狂奔。
+</div>
+
+</body>
+</html>
