@@ -2,418 +2,415 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>artoriase | Industrial AI Engineer</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Industrial AI Architecture</title>
 
 <style>
-
 :root{
-    --bg:#f6f2f7;
-    --card:#ffffff;
-    --primary:#8476a3;
-    --text:#2f2f35;
-    --light:#7a7a88;
-    --border:#e8e3ef;
+--bg:#f6f3f8;
+--card:#ffffff;
+--primary:#7c6aa6;
+--text:#2c2c34;
+--sub:#666;
+--border:#ebe6f1;
 }
 
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+margin:0;
+padding:0;
+box-sizing:border-box;
 }
 
 body{
-    background:linear-gradient(
-        180deg,
-        #f6f2f7 0%,
-        #faf8fc 100%
-    );
-    color:var(--text);
-    font-family:
-        Inter,
-        "Segoe UI",
-        sans-serif;
-    line-height:1.8;
-}
-
-.hero{
-    min-height:60vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    padding:60px 20px;
-
-    background:
-    radial-gradient(
-        circle at top,
-        rgba(190,170,220,.25),
-        transparent 50%
-    );
-}
-
-.hero h1{
-    font-size:4rem;
-    font-weight:300;
-    letter-spacing:2px;
-}
-
-.hero p{
-    margin-top:20px;
-    color:var(--light);
-    max-width:800px;
+font-family:Inter,Segoe UI,sans-serif;
+background:linear-gradient(180deg,#f6f3f8,#fcfbfd);
+color:var(--text);
+line-height:1.75;
 }
 
 .container{
-    max-width:1100px;
-    margin:auto;
-    padding:40px 20px;
+max-width:1100px;
+margin:auto;
+padding:40px 20px;
+}
+
+.lang{
+position:fixed;
+right:30px;
+top:25px;
+background:white;
+border:1px solid var(--border);
+padding:10px 18px;
+cursor:pointer;
+border-radius:12px;
+box-shadow:0 5px 20px rgba(0,0,0,.05);
+}
+
+.hero{
+padding:110px 0 80px;
+text-align:center;
+}
+
+.hero h1{
+font-size:3rem;
+font-weight:300;
+color:var(--primary);
+}
+
+.hero p{
+max-width:800px;
+margin:20px auto;
+color:var(--sub);
 }
 
 .card{
-    background:var(--card);
-    border:1px solid var(--border);
-    border-radius:20px;
-    padding:32px;
-    margin-bottom:24px;
-    box-shadow:
-    0 10px 30px rgba(0,0,0,.03);
+background:var(--card);
+border:1px solid var(--border);
+border-radius:20px;
+padding:30px;
+margin-bottom:25px;
+box-shadow:0 8px 25px rgba(0,0,0,.03);
 }
 
 h2{
-    color:var(--primary);
-    margin-bottom:20px;
-    font-weight:500;
+margin-bottom:15px;
+color:var(--primary);
+font-weight:500;
 }
 
 .arch{
-    display:grid;
-    gap:12px;
+background:#faf8fd;
+padding:20px;
+border-radius:12px;
+overflow:auto;
+font-family:Consolas;
 }
 
-.node{
-    padding:16px;
-    border-radius:12px;
-    background:#faf8fc;
-    border:1px solid #ece6f2;
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:16px;
 }
 
-.stack{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:16px;
-}
-
-.stack-item{
-    padding:20px;
-    border-radius:16px;
-    background:#faf8fc;
-    border:1px solid #ece6f2;
+.item{
+background:#faf8fd;
+padding:18px;
+border:1px solid var(--border);
+border-radius:14px;
 }
 
 .quote{
-    text-align:center;
-    font-size:1.2rem;
-    color:var(--primary);
-    font-style:italic;
-    margin-top:60px;
-    margin-bottom:60px;
+padding:40px;
+text-align:center;
+font-size:1.2rem;
+color:var(--primary);
+font-style:italic;
 }
 
 .footer{
-    text-align:center;
-    padding:50px;
-    color:var(--light);
+text-align:center;
+padding:40px;
+color:#777;
 }
 
-code{
-    color:#6b53a3;
+.cn{
+display:none;
 }
-
 </style>
 </head>
-
 <body>
 
-<section class="hero">
-
-<div>
-
-<h1>artoriase</h1>
-
-<p>
-Building bridges between LLMs and Machines.
-Industrial Automation, Edge Computing, Agent Systems,
-and the Great Perfection.
-</p>
-
-</div>
-
-</section>
+<button class="lang" onclick="toggleLang()">中文</button>
 
 <div class="container">
 
+<section class="hero">
+
+<h1>Industrial AI Architecture</h1>
+
+<p class="en">
+Building bridges between Large Language Models and physical machines through industrial protocols, edge computing, and autonomous agents.
+</p>
+
+<p class="cn">
+通过工业协议、边缘计算与智能 Agent，构建连接大语言模型与现实世界设备的桥梁。
+</p>
+
+</section>
+
 <div class="card">
+<h2 class="en">Engineering Philosophy</h2>
+<h2 class="cn">工程哲学</h2>
 
-<h2>Architecture Philosophy</h2>
-
-<p>
-
+<p class="en">
 Most software lives inside screens.
-
-I build systems that cross the boundary between
-digital information and physical reality.
-
-The goal is simple:
-
+My focus is software that interacts with the physical world.
+The future industrial stack is:
+Perception → Intelligence → Protocol → Machine → Action.
 </p>
 
-<br>
-
-<p>
-
-Perception → Intelligence → Protocol →
-Device → Real-world Action
-
+<p class="cn">
+大多数软件停留在屏幕之中。
+我的目标是让软件能够参与现实世界。
+未来工业系统的核心链路是：
+感知 → 智能 → 协议 → 设备 → 动作。
 </p>
-
 </div>
 
 <div class="card">
 
-<h2>Edge Computing Layer</h2>
+<h2 class="en">Architecture Overview</h2>
+<h2 class="cn">总体架构</h2>
 
 <div class="arch">
+Industrial Devices / PLC / Sensors
 
-<div class="node">
+           │
 
-<strong>C# Worker Service</strong><br>
-Long-running industrial service responsible for
-device communication, scheduling, acquisition,
-fault monitoring and protocol conversion.
+      Modbus TCP
 
-</div>
+           │
 
-<div class="node">
+   C# Worker Service
 
-<strong>Modbus TCP</strong><br>
-Connect PLCs, sensors, power meters,
-servo drives, robots and industrial equipment.
+           │
 
-</div>
+ ┌─────────┼─────────┐
 
-<div class="node">
+ MQTT    OPC UA    WebAPI
 
-<strong>Discrete Control</strong><br>
-Start / Stop / Reset / Parameter Write /
-Production Command Delivery.
+ └─────────┼─────────┘
 
-</div>
+       SQL Server
 
-<div class="node">
+           │
 
-<strong>Data Acquisition</strong><br>
-Real-time collection of process variables,
-status values, alarms and production metrics.
+    ASP.NET Core
 
-</div>
+           │
 
-</div>
+       MES / EMS
 
-</div>
-
-
-<div class="card">
-
-<h2>Industrial Connectivity Hub</h2>
-
-<p>
-
-The Worker Service becomes the center of the industrial edge system.
-
-</p>
-
-<br>
-
-<div class="arch">
-
-<div class="node">
-REST WebAPI
-</div>
-
-<div class="node">
-MQTT Broker Integration
-</div>
-
-<div class="node">
-OPC UA Server
-</div>
-
-<div class="node">
-Northbound Data Interfaces
-</div>
-
-</div>
-
-</div>
-
-<div class="card">
-
-<h2>Industrial Data Platform</h2>
-
-<div class="stack">
-
-<div class="stack-item">
-<h3>SQL Server</h3>
-Process Data
-Alarm Records
-Commands
-Production History
-</div>
-
-<div class="stack-item">
-<h3>Edge Storage</h3>
-Persistent Storage
-Offline Buffer
-Historical Retrieval
-</div>
-
-<div class="stack-item">
-<h3>Analytics</h3>
-Production Statistics
-OEE
-Equipment Analysis
-</div>
-
-</div>
-
-</div>
-
-<div class="card">
-
-<h2>Cloud MES & Business Systems</h2>
-
-<p>
-
-The cloud layer is built on a complete
-ASP.NET + SQL Server stack.
-
-</p>
-
-<br>
-
-<div class="stack">
-
-<div class="stack-item">
-MES
-</div>
-
-<div class="stack-item">
-Equipment Management
-</div>
-
-<div class="stack-item">
-Production Tracking
-</div>
-
-<div class="stack-item">
-Quality Management
-</div>
-
-<div class="stack-item">
-Work Orders
-</div>
-
-<div class="stack-item">
-Data Dashboards
-</div>
-
-</div>
-
-</div>
-
-<div class="card">
-
-<h2>Agent Layer</h2>
-
-<div class="arch">
-
-<div class="node">
+           │
 
 Microsoft Agent Framework
 
-</div>
+           │
 
-<div class="node">
-
-Tool Calling
-
-</div>
-
-<div class="node">
-
-Industrial Knowledge Retrieval
-
-</div>
-
-<div class="node">
-
-MQTT / OPC UA / Modbus Integration
-
-</div>
-
-<div class="node">
-
-Autonomous Decision Making
-
+      Local LLM
 </div>
 
 </div>
 
-<br>
+<div class="card">
 
-<p>
+<h2 class="en">Edge Computing Layer</h2>
+<h2 class="cn">边缘计算层</h2>
 
-Agents become a new interface for industrial systems.
+<p class="en">
+The core runtime is implemented using C# Worker Service.
+It continuously communicates with industrial devices through Modbus TCP,
+collects telemetry, executes discrete control commands, handles alarms,
+maintains connections and performs protocol conversion.
+This layer acts as the industrial operating runtime.
+</p>
 
-Not replacing control logic.
-
-Enhancing human decision making.
-
+<p class="cn">
+核心运行时采用 C# Worker Service 实现。
+持续通过 Modbus TCP 与现场设备通讯，完成数据采集、离散控制、
+报警监控、连接管理以及协议转换。
+该层相当于工业现场的软件运行时。
 </p>
 
 </div>
 
 <div class="card">
 
-<h2>Core Technology Stack</h2>
+<h2 class="en">Industrial Integration</h2>
+<h2 class="cn">工业集成能力</h2>
 
-<p>
+<div class="grid">
 
-C# · ASP.NET Core · Worker Service · SQL Server ·
-Modbus TCP · MQTT · OPC UA · OpenCV · YOLO ·
-Docker · Linux · Microsoft Agent Framework ·
-Industrial Automation · Edge Computing
+<div class="item">
+<b>Modbus TCP</b><br>
+PLC communication<br>
+Device acquisition<br>
+Discrete control
+</div>
 
+<div class="item">
+<b>MQTT</b><br>
+Event-driven messaging<br>
+IoT integration<br>
+Agent communication
+</div>
+
+<div class="item">
+<b>OPC UA Server</b><br>
+Unified address space<br>
+Enterprise integration<br>
+Data interoperability
+</div>
+
+<div class="item">
+<b>REST WebAPI</b><br>
+Platform integration<br>
+External services<br>
+Business systems
+</div>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<h2 class="en">Data Platform</h2>
+<h2 class="cn">数据平台</h2>
+
+<p class="en">
+SQL Server provides persistent storage for process values,
+production records, alarms, traceability information,
+equipment status and operational history.
+The database becomes the foundation of industrial analytics,
+MES workflows and AI-driven applications.
 </p>
+
+<p class="cn">
+SQL Server 用于存储工艺数据、生产记录、报警信息、
+追溯数据、设备状态以及历史运行数据。
+数据库是 MES、统计分析以及 AI 应用的核心基础设施。
+</p>
+
+</div>
+
+<div class="card">
+
+<h2 class="en">Business Systems</h2>
+<h2 class="cn">业务系统</h2>
+
+<p class="en">
+A complete ASP.NET Core + SQL Server stack is used to build
+MES, equipment management, production tracking,
+quality management, dashboards and reporting systems.
+The architecture supports both edge deployment and cloud deployment.
+</p>
+
+<p class="cn">
+采用 ASP.NET Core + SQL Server 技术栈开发
+MES、设备管理、生产追踪、质量管理、
+数据看板与报表系统。
+同时支持边缘部署与云端部署。
+</p>
+
+</div>
+
+<div class="card">
+
+<h2 class="en">Agent Architecture</h2>
+<h2 class="cn">Agent 架构</h2>
+
+<p class="en">
+Microsoft Agent Framework serves as the orchestration layer.
+Agents can access industrial data, invoke tools,
+query business systems, call APIs,
+and interact with MQTT, OPC UA and Modbus-based devices.
+The objective is not replacing PLC logic,
+but augmenting human decision-making.
+</p>
+
+<p class="cn">
+Microsoft Agent Framework 作为智能编排层。
+Agent 可以访问工业数据、调用工具、
+查询业务系统、调用 API，
+并与 MQTT、OPC UA、Modbus 设备进行交互。
+目标不是替代 PLC，而是增强人的决策能力。
+</p>
+
+</div>
+
+<div class="card">
+
+<h2 class="en">Technology Stack</h2>
+<h2 class="cn">技术栈</h2>
+
+<div class="arch">
+C#
+
+ASP.NET Core
+
+Worker Service
+
+SQL Server
+
+Modbus TCP
+
+MQTT
+
+OPC UA
+
+OpenCV
+
+YOLO
+
+Linux
+
+Docker
+
+Microsoft Agent Framework
+
+Edge Computing
+
+Industrial Automation
+
+Industrial AI
+</div>
 
 </div>
 
 <div class="quote">
+<p class="en">
+Machines don't care whether commands come from SCADA,
+C#, Python, or an LLM.<br>
+To a machine, it's all just signals.
+</p>
 
-“Machines don't care whether the command comes from
-SCADA, C#, Python, or an LLM.
-To a machine, it's all just signals.”
-
-</div>
-
+<p class="cn">
+机器并不关心命令来自 SCADA、C#、Python，
+还是大语言模型。<br>
+对于机器而言，一切最终都只是信号。
+</p>
 </div>
 
 <div class="footer">
-
 May all beings abide in the Great Perfection.
+</div>
 
 </div>
 
+<script>
+let zh = false;
+
+function toggleLang(){
+
+zh=!zh;
+
+document.querySelector('.lang').innerText=
+zh ? 'English' : '中文';
+
+document.querySelectorAll('.en').forEach(
+e=>e.style.display=zh?'none':'block'
+);
+
+document.querySelectorAll('.cn').forEach(
+e=>e.style.display=zh?'block':'none'
+);
+
+document.documentElement.lang=
+zh ? 'zh-CN' : 'en';
+}
+</script>
+
 </body>
 </html>
+``
