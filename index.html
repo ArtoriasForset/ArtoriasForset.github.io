@@ -1,147 +1,417 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>artoriase | Industrial AI Engineer</title>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
 
-    <title>我的个人主页</title>
+:root{
+    --bg:#f6f2f7;
+    --card:#ffffff;
+    --primary:#8476a3;
+    --text:#2f2f35;
+    --light:#7a7a88;
+    --border:#e8e3ef;
+}
 
-    <style>
-        * {
-            box-sizing: border-box;
-        }
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
-        body {
-            margin: 0;
-            font-family: Arial, "Microsoft YaHei", sans-serif;
-            background: #f5f7fa;
-            color: #333;
-        }
+body{
+    background:linear-gradient(
+        180deg,
+        #f6f2f7 0%,
+        #faf8fc 100%
+    );
+    color:var(--text);
+    font-family:
+        Inter,
+        "Segoe UI",
+        sans-serif;
+    line-height:1.8;
+}
 
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 60px 20px;
-        }
+.hero{
+    min-height:60vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:60px 20px;
 
-        .card {
-            background: white;
-            border-radius: 16px;
-            padding: 50px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-        }
+    background:
+    radial-gradient(
+        circle at top,
+        rgba(190,170,220,.25),
+        transparent 50%
+    );
+}
 
-        h1 {
-            margin-top: 0;
-            font-size: 42px;
-        }
+.hero h1{
+    font-size:4rem;
+    font-weight:300;
+    letter-spacing:2px;
+}
 
-        h2 {
-            margin-top: 40px;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 10px;
-        }
+.hero p{
+    margin-top:20px;
+    color:var(--light);
+    max-width:800px;
+}
 
-        p {
-            line-height: 1.8;
-        }
+.container{
+    max-width:1100px;
+    margin:auto;
+    padding:40px 20px;
+}
 
-        .tag {
-            display: inline-block;
-            background: #eef2ff;
-            color: #4f46e5;
-            padding: 6px 12px;
-            border-radius: 20px;
-            margin: 5px 5px 5px 0;
-            font-size: 14px;
-        }
+.card{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:20px;
+    padding:32px;
+    margin-bottom:24px;
+    box-shadow:
+    0 10px 30px rgba(0,0,0,.03);
+}
 
-        .links a {
-            display: inline-block;
-            margin-right: 20px;
-            color: #2563eb;
-            text-decoration: none;
-        }
+h2{
+    color:var(--primary);
+    margin-bottom:20px;
+    font-weight:500;
+}
 
-        .links a:hover {
-            text-decoration: underline;
-        }
+.arch{
+    display:grid;
+    gap:12px;
+}
 
-        footer {
-            text-align: center;
-            margin-top: 30px;
-            color: #888;
-            font-size: 14px;
-        }
-    </style>
+.node{
+    padding:16px;
+    border-radius:12px;
+    background:#faf8fc;
+    border:1px solid #ece6f2;
+}
+
+.stack{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:16px;
+}
+
+.stack-item{
+    padding:20px;
+    border-radius:16px;
+    background:#faf8fc;
+    border:1px solid #ece6f2;
+}
+
+.quote{
+    text-align:center;
+    font-size:1.2rem;
+    color:var(--primary);
+    font-style:italic;
+    margin-top:60px;
+    margin-bottom:60px;
+}
+
+.footer{
+    text-align:center;
+    padding:50px;
+    color:var(--light);
+}
+
+code{
+    color:#6b53a3;
+}
+
+</style>
 </head>
 
 <body>
 
+<section class="hero">
+
+<div>
+
+<h1>artoriase</h1>
+
+<p>
+Building bridges between LLMs and Machines.
+Industrial Automation, Edge Computing, Agent Systems,
+and the Great Perfection.
+</p>
+
+</div>
+
+</section>
+
 <div class="container">
 
-    <main class="card">
+<div class="card">
 
-        <h1>你好，我是 Sen</h1>
+<h2>Architecture Philosophy</h2>
 
-        <p>
-            一名正在学习软件工程、AI 与工业自动化的开发者。
-        </p>
+<p>
 
-        <h2>关于我</h2>
+Most software lives inside screens.
 
-        <p>
-            我喜欢研究计算机软件、人工智能、工业控制以及
-            Web 开发，希望将软件与现实世界的设备连接起来。
-        </p>
+I build systems that cross the boundary between
+digital information and physical reality.
 
-        <h2>技术栈</h2>
+The goal is simple:
 
-        <div>
-            <span class="tag">C#</span>
-            <span class="tag">.NET</span>
-            <span class="tag">ASP.NET Core</span>
-            <span class="tag">WPF</span>
-            <span class="tag">Python</span>
-            <span class="tag">PostgreSQL</span>
-            <span class="tag">Docker</span>
-            <span class="tag">Linux</span>
-            <span class="tag">MQTT</span>
-            <span class="tag">OPC UA</span>
-            <span class="tag">Modbus</span>
-            <span class="tag">AI</span>
-        </div>
+</p>
 
-        <h2>项目</h2>
+<br>
 
-        <p>
-            <strong>个人技术主页</strong><br>
-            使用 HTML、CSS 和 GitHub Pages 构建。
-        </p>
+<p>
 
-        <p>
-            <strong>工业 AI 系统</strong><br>
-            探索 .NET、工业通信协议与人工智能结合的可能性。
-        </p>
+Perception → Intelligence → Protocol →
+Device → Real-world Action
 
-        <h2>联系我</h2>
+</p>
 
-        <div class="links">
-            <a href="https://github.com/" target="_blank">
-                GitHub
-            </a>
+</div>
 
-            <a href="mailto:your@email.com">
-                Email
-            </a>
-        </div>
+<div class="card">
 
-    </main>
+<h2>Edge Computing Layer</h2>
 
-    <footer>
-        © 2026 Sen · Built with HTML
-    </footer>
+<div class="arch">
+
+<div class="node">
+
+<strong>C# Worker Service</strong><br>
+Long-running industrial service responsible for
+device communication, scheduling, acquisition,
+fault monitoring and protocol conversion.
+
+</div>
+
+<div class="node">
+
+<strong>Modbus TCP</strong><br>
+Connect PLCs, sensors, power meters,
+servo drives, robots and industrial equipment.
+
+</div>
+
+<div class="node">
+
+<strong>Discrete Control</strong><br>
+Start / Stop / Reset / Parameter Write /
+Production Command Delivery.
+
+</div>
+
+<div class="node">
+
+<strong>Data Acquisition</strong><br>
+Real-time collection of process variables,
+status values, alarms and production metrics.
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="card">
+
+<h2>Industrial Connectivity Hub</h2>
+
+<p>
+
+The Worker Service becomes the center of the industrial edge system.
+
+</p>
+
+<br>
+
+<div class="arch">
+
+<div class="node">
+REST WebAPI
+</div>
+
+<div class="node">
+MQTT Broker Integration
+</div>
+
+<div class="node">
+OPC UA Server
+</div>
+
+<div class="node">
+Northbound Data Interfaces
+</div>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<h2>Industrial Data Platform</h2>
+
+<div class="stack">
+
+<div class="stack-item">
+<h3>SQL Server</h3>
+Process Data
+Alarm Records
+Commands
+Production History
+</div>
+
+<div class="stack-item">
+<h3>Edge Storage</h3>
+Persistent Storage
+Offline Buffer
+Historical Retrieval
+</div>
+
+<div class="stack-item">
+<h3>Analytics</h3>
+Production Statistics
+OEE
+Equipment Analysis
+</div>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<h2>Cloud MES & Business Systems</h2>
+
+<p>
+
+The cloud layer is built on a complete
+ASP.NET + SQL Server stack.
+
+</p>
+
+<br>
+
+<div class="stack">
+
+<div class="stack-item">
+MES
+</div>
+
+<div class="stack-item">
+Equipment Management
+</div>
+
+<div class="stack-item">
+Production Tracking
+</div>
+
+<div class="stack-item">
+Quality Management
+</div>
+
+<div class="stack-item">
+Work Orders
+</div>
+
+<div class="stack-item">
+Data Dashboards
+</div>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<h2>Agent Layer</h2>
+
+<div class="arch">
+
+<div class="node">
+
+Microsoft Agent Framework
+
+</div>
+
+<div class="node">
+
+Tool Calling
+
+</div>
+
+<div class="node">
+
+Industrial Knowledge Retrieval
+
+</div>
+
+<div class="node">
+
+MQTT / OPC UA / Modbus Integration
+
+</div>
+
+<div class="node">
+
+Autonomous Decision Making
+
+</div>
+
+</div>
+
+<br>
+
+<p>
+
+Agents become a new interface for industrial systems.
+
+Not replacing control logic.
+
+Enhancing human decision making.
+
+</p>
+
+</div>
+
+<div class="card">
+
+<h2>Core Technology Stack</h2>
+
+<p>
+
+C# · ASP.NET Core · Worker Service · SQL Server ·
+Modbus TCP · MQTT · OPC UA · OpenCV · YOLO ·
+Docker · Linux · Microsoft Agent Framework ·
+Industrial Automation · Edge Computing
+
+</p>
+
+</div>
+
+<div class="quote">
+
+“Machines don't care whether the command comes from
+SCADA, C#, Python, or an LLM.
+To a machine, it's all just signals.”
+
+</div>
+
+</div>
+
+<div class="footer">
+
+May all beings abide in the Great Perfection.
 
 </div>
 
