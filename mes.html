@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smart Factory Edge MES</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#0f172a;
+    color:#e2e8f0;
+    font-family:"Microsoft YaHei",sans-serif;
+}
+
+.header{
+    height:70px;
+    background:#111827;
+    border-bottom:1px solid #334155;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:0 30px;
+}
+
+.logo{
+    font-size:24px;
+    font-weight:bold;
+    color:#38bdf8;
+}
+
+.time{
+    color:#94a3b8;
+}
+
+.grid{
+    padding:20px;
+    display:grid;
+    gap:20px;
+    grid-template-columns: repeat(12,1fr);
+}
+
+.card{
+    background:#1e293b;
+    border-radius:12px;
+    padding:16px;
+    box-shadow:0 0 15px rgba(0,0,0,.3);
+}
+
+.card-title{
+    color:#38bdf8;
+    margin-bottom:15px;
+    font-size:18px;
+}
+
+.kpi{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    height:120px;
+}
+
+.kpi-value{
+    font-size:34px;
+    font-weight:bold;
+}
+
+.kpi-label{
+    margin-top:8px;
+    color:#94a3b8;
+}
+
+.span3{grid-column:span 3;}
+.span4{grid-column:span 4;}
+.span6{grid-column:span 6;}
+.span8{grid-column:span 8;}
+.span12{grid-column:span 12;}
+
+.status{
+    display:flex;
+    justify-content:space-between;
+    padding:8px 0;
+    border-bottom:1px solid #334155;
+}
+
+.online{
+    color:#22c55e;
+}
+
+.warning{
+    color:#f59e0b;
+}
+
+.alarm{
+    color:#ef4444;
+}
+
+.agent-box{
+    line-height:1.8;
+}
+
+canvas{
+    width:100%;
+    height:220px;
+}
+
+.table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+.table th,
+.table td{
+    padding:10px;
+    border-bottom:1px solid #334155;
+    text-align:left;
+}
+
+.badge{
+    padding:4px 10px;
+    border-radius:20px;
+    font-size:12px;
+}
+
+.badge-green{
+    background:#14532d;
+    color:#4ade80;
+}
+
+.badge-red{
+    background:#7f1d1d;
+    color:#f87171;
+}
+
+.badge-yellow{
+    background:#78350f;
+    color:#fbbf24;
+}
+
+.footer{
+    text-align:center;
+    padding:15px;
+    color:#64748b;
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+    <div class="logo">
+        Smart Factory Edge MES
+    </div>
+
+    <div class="time" id="time">
+    </div>
+</div>
+
+<div class="grid">
+
+    <div class="card span3">
+        <div class="card-title">生产总量</div>
+        <div class="kpi">
+            <div class="kpi-value">12,568</div>
+            <div class="kpi-label">今日产量</div>
+        </div>
+    </div>
+
+    <div class="card span3">
+        <div class="card-title">良率</div>
+        <div class="kpi">
+            <div class="kpi-value" style="color:#4ade80">
+                98.7%
+            </div>
+            <div class="kpi-label">实时统计</div>
+        </div>
+    </div>
+
+    <div class="card span3">
+        <div class="card-title">设备在线率</div>
+        <div class="kpi">
+            <div class="kpi-value">96%</div>
+            <div class="kpi-label">24 / 25</div>
+        </div>
+    </div>
+
+    <div class="card span3">
+        <div class="card-title">OEE</div>
+        <div class="kpi">
+            <div class="kpi-value" style="color:#38bdf8">
+                88.5%
+            </div>
+            <div class="kpi-label">综合效率</div>
+        </div>
+    </div>
+
+    <div class="card span8">
+        <div class="card-title">
+            产量趋势
+        </div>
+        <canvas id="chart"></canvas>
+    </div>
+
+    <div class="card span4">
+        <div class="card-title">
+            Edge Runtime
+        </div>
+
+        <div class="status">
+            <span>Modbus TCP</span>
+            <span class="online">运行中</span>
+        </div>
+
+        <div class="status">
+            <span>OPC UA</span>
+            <span class="online">运行中</span>
+        </div>
+
+        <div class="status">
+            <span>设备采集</span>
+            <span class="online">正常</span>
+        </div>
+
+        <div class="status">
+            <span>规则引擎</span>
+            <span class="online">正常</span>
+        </div>
+
+        <div class="status">
+            <span>Agent Service</span>
+            <span class="warning">负载72%</span>
+        </div>
+
+    </div>
+
+    <div class="card span6">
+        <div class="card-title">
+            环境监测
+        </div>
+
+        <div class="status">
+            <span>车间温度</span>
+            <span>26.8℃</span>
+        </div>
+
+        <div class="status">
+            <span>车间湿度</span>
+            <span>58%</span>
+        </div>
+
+        <div class="status">
+            <span>空气质量</span>
+            <span class="online">优</span>
+        </div>
+
+        <div class="status">
+            <span>能耗</span>
+            <span>368 kWh</span>
+        </div>
+
+    </div>
+
+    <div class="card span6">
+        <div class="card-title">
+            Agent 智能分析
+        </div>
+
+        <div class="agent-box">
+
+            ✅ 3号产线产能正常<br>
+
+            ✅ 良率保持稳定趋势<br>
+
+            ⚠ 5号设备振动值偏高<br>
+
+            ⚠ 建议未来 24 小时安排预防维护<br>
+
+            ✅ 当前订单可按期交付
+
+        </div>
+
+    </div>
+
+    <div class="card span12">
+
+        <div class="card-title">
+            设备监控
+        </div>
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th>设备</th>
+                <th>状态</th>
+                <th>产量</th>
+                <th>运行时间</th>
+                <th>品质</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr>
+                <td>CNC-001</td>
+                <td><span class="badge badge-green">运行中</span></td>
+                <td>2150</td>
+                <td>18h</td>
+                <td>99.1%</td>
+            </tr>
+
+            <tr>
+                <td>CNC-002</td>
+                <td><span class="badge badge-green">运行中</span></td>
+                <td>2098</td>
+                <td>17h</td>
+                <td>98.9%</td>
+            </tr>
+
+            <tr>
+                <td>PLC-003</td>
+                <td><span class="badge badge-yellow">维护中</span></td>
+                <td>0</td>
+                <td>0h</td>
+                <td>-</td>
+            </tr>
+
+            <tr>
+                <td>Robot-005</td>
+                <td><span class="badge badge-red">告警</span></td>
+                <td>1801</td>
+                <td>15h</td>
+                <td>96.5%</td>
+            </tr>
+            </tbody>
+
+        </table>
+
+    </div>
+
+    <div class="card span12">
+
+        <div class="card-title">
+            告警中心
+        </div>
+
+        <div class="status">
+            <span>2026-09-30 14:26 Robot-005振动超限</span>
+            <span class="alarm">严重</span>
+        </div>
+
+        <div class="status">
+            <span>2026-09-30 13:18 环境温度偏高</span>
+            <span class="warning">一般</span>
+        </div>
+
+        <div class="status">
+            <span>2026-09-30 11:52 OPC UA连接重试成功</span>
+            <span class="online">恢复</span>
+        </div>
+
+    </div>
+
+</div>
+
+<div class="footer">
+    Smart Factory Edge MES | IT + OT + AI Integrated Platform
+</div>
+
+<script>
+
+function updateTime(){
+    document.getElementById("time").innerText =
+        new Date().toLocaleString();
+}
+
+setInterval(updateTime,1000);
+updateTime();
+
+const canvas=document.getElementById("chart");
+const ctx=canvas.getContext("2d");
+
+canvas.width=900;
+canvas.height=220;
+
+let data=[120,180,170,220,260,320,380,410,460,520];
+
+function draw(){
+
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+
+    ctx.strokeStyle="#38bdf8";
+    ctx.lineWidth=4;
+
+    ctx.beginPath();
+
+    for(let i=0;i<data.length;i++){
+
+        let x=i*(canvas.width/(data.length-1));
+
+        let y=canvas.height-data[i]/3;
+
+        if(i===0)
+            ctx.moveTo(x,y);
+        else
+            ctx.lineTo(x,y);
+    }
+
+    ctx.stroke();
+
+    for(let i=0;i<data.length;i++){
+
+        let x=i*(canvas.width/(data.length-1));
+        let y=canvas.height-data[i]/3;
+
+        ctx.fillStyle="#38bdf8";
+        ctx.beginPath();
+        ctx.arc(x,y,5,0,Math.PI*2);
+        ctx.fill();
+
+    }
+
+}
+
+draw();
+
+</script>
+
+</body>
+</html>
