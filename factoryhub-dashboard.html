@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FactoryHub Digital Factory</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    height:100vh;
+    overflow:hidden;
+    background:
+    radial-gradient(circle at center,#102d49,#081420,#03070c);
+    font-family:"Segoe UI",sans-serif;
+    color:white;
+}
+
+#title{
+    position:absolute;
+    top:25px;
+    width:100%;
+    text-align:center;
+    z-index:100;
+}
+
+#title h1{
+    font-size:42px;
+    color:#55dfff;
+    letter-spacing:4px;
+}
+
+#title h2{
+    margin-top:8px;
+    font-weight:300;
+    color:#8ea8b8;
+}
+
+.dashboard{
+    width:100%;
+    height:100%;
+    position:relative;
+}
+
+.node{
+    position:absolute;
+    border-radius:20px;
+    backdrop-filter:blur(10px);
+    border:1px solid rgba(255,255,255,.1);
+    box-shadow:
+        0 0 30px rgba(0,200,255,.25),
+        inset 0 0 20px rgba(255,255,255,.05);
+
+    background:rgba(20,30,45,.8);
+}
+
+.node h3{
+    color:#6ddfff;
+    text-align:center;
+    margin-top:15px;
+}
+
+.node p{
+    padding:10px 20px;
+    line-height:1.8;
+    font-size:14px;
+    color:#bfd7e4;
+}
+
+/* 中央控制塔 */
+
+.core{
+    width:420px;
+    height:260px;
+
+    left:50%;
+    top:50%;
+
+    transform:translate(-50%,-50%);
+
+    border:2px solid #00e0ff;
+
+    box-shadow:
+    0 0 80px rgba(0,220,255,.4),
+    inset 0 0 50px rgba(0,255,255,.1);
+}
+
+.core h1{
+    margin-top:20px;
+    text-align:center;
+    color:#00f0ff;
+    text-shadow:0 0 20px #00f0ff;
+}
+
+.core .stats{
+    display:flex;
+    justify-content:space-around;
+    margin-top:25px;
+}
+
+.card{
+    text-align:center;
+}
+
+.card span{
+    display:block;
+    font-size:30px;
+    color:#00ffae;
+}
+
+.card label{
+    color:#95a8b6;
+}
+
+/* agent */
+
+.agent{
+    width:340px;
+    height:180px;
+
+    left:50%;
+    top:60px;
+    transform:translateX(-50%);
+}
+
+/* plc */
+
+.plc{
+    width:300px;
+    height:220px;
+
+    left:80px;
+    top:330px;
+}
+
+/* daq */
+
+.daq{
+    width:300px;
+    height:220px;
+
+    left:420px;
+    bottom:60px;
+}
+
+/* vision */
+
+.vision{
+    width:300px;
+    height:220px;
+
+    right:420px;
+    bottom:60px;
+}
+
+/* motion */
+
+.motion{
+    width:300px;
+    height:220px;
+
+    right:80px;
+    top:330px;
+}
+
+/* mes */
+
+.mes{
+    width:320px;
+    height:200px;
+
+    right:120px;
+    top:80px;
+}
+
+/* 连接线 */
+
+svg{
+    position:absolute;
+    width:100%;
+    height:100%;
+}
+
+.flow{
+    fill:none;
+    stroke:#00cfff;
+    stroke-width:3;
+
+    stroke-dasharray:12 8;
+
+    animation:flow 1s linear infinite;
+}
+
+@keyframes flow{
+    from{
+        stroke-dashoffset:0;
+    }
+    to{
+        stroke-dashoffset:-20;
+    }
+}
+
+.status{
+    position:absolute;
+    bottom:25px;
+    left:50%;
+    transform:translateX(-50%);
+    color:#00ffaa;
+    font-size:14px;
+    letter-spacing:2px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="title">
+    <h1>FACTORYHUB</h1>
+    <h2>Smart Industrial Management Platform</h2>
+</div>
+
+<svg>
+
+<path class="flow" d="M800 240 L800 360"/>
+<path class="flow" d="M380 430 L590 430"/>
+<path class="flow" d="M1020 430 L1220 430"/>
+
+<path class="flow" d="M520 650 L700 500"/>
+<path class="flow" d="M1080 650 L900 500"/>
+
+<path class="flow" d="M1150 170 L900 280"/>
+
+</svg>
+
+<div class="dashboard">
+
+<div class="node agent">
+<h3>Industrial Agent</h3>
+<p>
+🤖 Production Scheduling<br>
+🤖 Alarm Analysis<br>
+🤖 Predictive Maintenance<br>
+🤖 Energy Optimization
+</p>
+</div>
+
+<div class="node mes">
+<h3>Micro MES</h3>
+<p>
+📦 Work Orders<br>
+📈 OEE<br>
+📊 Traceability<br>
+📑 Quality Records
+</p>
+</div>
+
+<div class="node plc">
+<h3>Discrete Control</h3>
+<p>
+⚡ Siemens S7-1200<br>
+⚡ Beckhoff PLC<br>
+⚡ EtherCAT I/O<br>
+⚡ Robot Cell
+</p>
+</div>
+
+<div class="node motion">
+<h3>Real-Time Motion</h3>
+<p>
+🎯 TwinCAT Motion<br>
+🎯 Servo Drive<br>
+🎯 CNC Axis<br>
+🎯 EtherCAT Network
+</p>
+</div>
+
+<div class="node daq">
+<h3>Data Acquisition</h3>
+<p>
+📡 OPC UA<br>
+📡 MQTT<br>
+📡 Modbus TCP<br>
+📡 Edge Devices
+</p>
+</div>
+
+<div class="node vision">
+<h3>Industrial Vision</h3>
+<p>
+📷 Line Scan Camera<br>
+📷 OpenCV<br>
+📷 YOLO Detection<br>
+📷 Dimension Inspection
+</p>
+</div>
+
+<div class="node core">
+
+<h1>FactoryHub</h1>
+
+<div class="stats">
+
+<div class="card">
+<span>256</span>
+<label>Devices</label>
+</div>
+
+<div class="card">
+<span>12K</span>
+<label>Tags</label>
+</div>
+
+<div class="card">
+<span>18</span>
+<label>Alarms</label>
+</div>
+
+</div>
+
+<p style="margin-top:25px;text-align:center">
+Device · Tag · Alarm · Command · Event
+<br><br>
+OPC UA Server · MQTT Broker · REST API
+</p>
+
+</div>
+
+<div class="status">
+SYSTEM ONLINE ● DATA FLOWING ● AI ACTIVE
+</div>
+
+</div>
+
+</body>
+</html>
