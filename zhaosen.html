@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>赵森｜工业软件开发工程师</title>
+<style>
+  :root {
+    --ink: #202a33;
+    --muted: #64717d;
+    --line: #dce3e8;
+    --accent: #315b69;
+    --accent-soft: #edf3f4;
+    --paper: #ffffff;
+    --canvas: #eef1f3;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--canvas);
+    color: var(--ink);
+    font-family: "Microsoft YaHei", "PingFang SC", "Noto Sans CJK SC", Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.72;
+    -webkit-font-smoothing: antialiased;
+  }
+  .toolbar {
+    max-width: 960px;
+    margin: 22px auto 14px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    padding: 0 18px;
+  }
+  .toolbar button {
+    appearance: none;
+    border: 1px solid #c7d0d6;
+    background: #fff;
+    color: #26343c;
+    padding: 9px 14px;
+    border-radius: 6px;
+    font: inherit;
+    cursor: pointer;
+  }
+  .toolbar button.primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+  .page {
+    width: min(960px, calc(100% - 32px));
+    margin: 0 auto 36px;
+    background: var(--paper);
+    box-shadow: 0 12px 38px rgba(28, 43, 53, .09);
+    padding: 48px 58px 52px;
+  }
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 30px;
+    padding-bottom: 25px;
+    border-bottom: 2px solid var(--accent);
+  }
+  h1 { margin: 0 0 5px; font-size: 34px; letter-spacing: 2px; line-height: 1.3; font-weight: 700; }
+  .role { color: var(--accent); font-size: 17px; font-weight: 600; letter-spacing: .5px; }
+  .intro { margin: 12px 0 0; color: var(--muted); max-width: 560px; }
+  .contact { min-width: 220px; text-align: right; color: #46545e; font-size: 13px; padding-top: 6px; }
+  .contact div { margin: 3px 0; }
+  .contact .label { color: #87929a; display: inline-block; width: 48px; text-align: left; }
+  .section { margin-top: 25px; }
+  .section-title {
+    display: flex; align-items: center; gap: 10px;
+    font-size: 17px; font-weight: 700; margin: 0 0 13px;
+    letter-spacing: .4px;
+  }
+  .section-title:before { content: ""; width: 4px; height: 19px; background: var(--accent); border-radius: 2px; }
+  p { margin: 0 0 8px; }
+  .summary { font-size: 14px; }
+  .skills {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 10px 18px;
+  }
+  .skill { border-left: 1px solid var(--line); padding-left: 12px; }
+  .skill strong { display: block; color: #2b4651; margin-bottom: 2px; font-size: 13px; }
+  .skill span { color: #53616b; font-size: 13px; }
+  .project { margin: 0 0 18px; }
+  .project:last-child { margin-bottom: 0; }
+  .project-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin-bottom: 5px; }
+  .project h3 { margin: 0; font-size: 15px; font-weight: 700; }
+  .project .type { color: var(--accent); font-size: 12px; white-space: nowrap; }
+  .stack { color: #71808a; font-size: 12px; margin-bottom: 6px; }
+  ul { margin: 5px 0 0; padding-left: 19px; }
+  li { margin: 3px 0; padding-left: 2px; }
+  .note {
+    margin-top: 9px; padding: 10px 12px; background: var(--accent-soft);
+    border-radius: 5px; color: #425963; font-size: 12px;
+  }
+  .edu { display: flex; justify-content: space-between; gap: 18px; }
+  .edu strong { font-size: 14px; }
+  .edu .date { color: var(--muted); white-space: nowrap; }
+  .footer { border-top: 1px solid var(--line); margin-top: 28px; padding-top: 12px; color: #849098; font-size: 11px; }
+  @media (max-width: 650px) {
+    .page { padding: 28px 22px 32px; }
+    header { display: block; }
+    .contact { text-align: left; margin-top: 15px; }
+    .skills { grid-template-columns: 1fr; }
+    .project-head { display: block; }
+    .project .type { display: block; }
+    .edu { display: block; }
+  }
+  @media print {
+    @page { size: A4; margin: 12mm; }
+    body { background: #fff; font-size: 10.5pt; }
+    .toolbar { display: none; }
+    .page { width: auto; margin: 0; padding: 0; box-shadow: none; }
+    header { padding-bottom: 16px; }
+    h1 { font-size: 28pt; }
+    .section { margin-top: 17px; }
+    .project { break-inside: avoid; margin-bottom: 12px; }
+    .note { break-inside: avoid; }
+    * { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+<div class="toolbar">
+  <button onclick="window.print()" class="primary">打印 / 导出 PDF</button>
+  <button onclick="document.body.classList.toggle('review-mode')">简历预览</button>
+</div>
+
+<main class="page">
+  <header>
+    <div>
+      <h1>赵森</h1>
+      <div class="role">工业软件开发工程师</div>
+      <p class="intro">以 C# / .NET 为主线，关注制造业软件、设备通信与边缘计算。希望将可靠的软件工程方法用于设备数据采集、生产业务管理和工业智能应用。</p>
+    </div>
+    <div class="contact">
+      <div><span class="label">邮箱</span> artoriase@outlook.com</div>
+      <div><span class="label">学历</span> 大专 · 软件技术</div>
+      <div><span class="label">毕业</span> 2017 年</div>
+      <div><span class="label">求职方向</span> C# / MES / 工业物联网</div>
+    </div>
+  </header>
+
+  <section class="section">
+    <h2 class="section-title">个人简介</h2>
+    <p class="summary">具备软件开发与制造业应用场景探索经历，主要使用 C#、ASP.NET Core、Razor Pages、WPF 及 SQL 数据库技术。关注从设备通信、后台服务到业务管理界面的完整链路，正在围绕 FactoryHub 整理可演示的工业软件原型。重视代码可维护性、异常处理、数据追溯与系统边界，期望在工业软件或 MES 团队中持续积累交付经验。</p>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">技术能力</h2>
+    <div class="skills">
+      <div class="skill">
+        <strong>C# / .NET</strong>
+        <span>C#、面向对象设计、异步编程基础、依赖注入、后台服务开发；持续强化框架机制与工程化实践。</span>
+      </div>
+      <div class="skill">
+        <strong>Web 应用</strong>
+        <span>ASP.NET Core、Razor Pages、Web API、Bootstrap 5；能够组织常见业务页面与接口。</span>
+      </div>
+      <div class="skill">
+        <strong>数据库</strong>
+        <span>SQL Server、EF Core、关系型数据建模；关注业务状态、操作记录和数据追溯。</span>
+      </div>
+      <div class="skill">
+        <strong>工业通信</strong>
+        <span>学习与实践方向包括 Modbus TCP、OPC UA、MQTT；理解采集服务与业务平台的职责划分。</span>
+      </div>
+      <div class="skill">
+        <strong>桌面应用</strong>
+        <span>WPF、MVVM 基础，面向设备状态监视、操作界面与现场辅助工具。</span>
+      </div>
+      <div class="skill">
+        <strong>AI 应用集成</strong>
+        <span>Ollama 本地模型与 HTTP API 实验；关注结构化输出、业务工具调用及人工确认机制。</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">项目经历</h2>
+
+    <article class="project">
+      <div class="project-head">
+        <h3>FactoryHub｜工业设备管理与智能应用平台（个人项目）</h3>
+        <span class="type">持续设计与原型开发</span>
+      </div>
+      <div class="stack">技术方向：C# / ASP.NET Core / Worker Service / SQL Server / Modbus TCP / OPC UA / MQTT / Ollama</div>
+      <ul>
+        <li>围绕 Device、Tag、Alarm、Command 设计统一设备数据与操作模型，探索将不同设备协议映射到一致的业务表达。</li>
+        <li>规划由 Worker Service 承担设备连接、数据采集与协议适配，由 ASP.NET Core 承担设备管理、事件记录及业务接口。</li>
+        <li>探索接入本地大语言模型，为设备状态问答、告警解释和维修建议提供辅助；涉及现场操作时保留权限校验与人工确认。</li>
+        <li>项目目标是形成可逐步验证的工业软件原型，后续重点补充自动化测试、异常恢复、运行监控与端到端演示。</li>
+      </ul>
+      <div class="note">面试展示建议：准备一段真实可运行的设备数据链路，并明确区分“已完成”“已验证”和“设计规划”，避免将路线图描述为已交付功能。</div>
+    </article>
+
+    <article class="project">
+      <div class="project-head">
+        <h3>AutoWMSIt｜缓冲物料管理系统</h3>
+        <span class="type">Web 应用原型</span>
+      </div>
+      <div class="stack">技术方向：ASP.NET Core Razor Pages / C# / EF Core / SQL Server / Bootstrap 5 / Identity</div>
+      <ul>
+        <li>围绕物料、库存、项目及操作日志组织业务模块，面向缓冲物料的状态跟踪与记录管理。</li>
+        <li>设计物料从申请、采购、入库、领用、使用到报废的状态流转思路，并关注操作留痕与责任追踪。</li>
+        <li>采用服务端页面与 Bootstrap 5 构建管理界面，探索通过身份认证与业务状态约束规范操作流程。</li>
+      </ul>
+    </article>
+
+    <article class="project">
+      <div class="project-head">
+        <h3>非标自动化设备数据看板</h3>
+        <span class="type">项目实践</span>
+      </div>
+      <div class="stack">技术方向：C# / WPF</div>
+      <ul>
+        <li>参与非标自动化场景下的设备数据看板开发，面向现场数据展示与状态监视需求。</li>
+        <li>积累设备软件界面与制造业现场需求之间的实践认知，后续希望进一步加强通信、异常处理与可维护性设计。</li>
+      </ul>
+    </article>
+
+    <article class="project">
+      <div class="project-head">
+        <h3>工业园区物业管理网站</h3>
+        <span class="type">Web 项目实践</span>
+      </div>
+      <div class="stack">技术方向：Next.js / Supabase</div>
+      <ul>
+        <li>围绕园区物业业务需求进行网站功能与数据服务实践，了解现代 Web 应用的页面、数据及部署协作流程。</li>
+      </ul>
+    </article>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">工作与实践经历</h2>
+    <article class="project">
+      <div class="project-head">
+        <h3>比亚迪｜工作经历</h3>
+        <span class="type">约 1 年 · 2022 年末起</span>
+      </div>
+      <ul>
+        <li>接触制造业研发环境及机器人、视觉、控制相关软件场景，建立对工业自动化软硬件协作的初步认识。</li>
+      </ul>
+    </article>
+    <article class="project">
+      <div class="project-head">
+        <h3>软件开发与项目实践</h3>
+        <span class="type">2018 年起，阶段性经历</span>
+      </div>
+      <ul>
+        <li>参与微信小程序、企业网站等开发实践，后续持续围绕 C#、WPF、ASP.NET Core 与工业软件场景进行学习和原型开发。</li>
+      </ul>
+    </article>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">教育背景</h2>
+    <div class="edu">
+      <div><strong>陕西工业职业技术学院</strong><br><span>软件技术 · 大专</span></div>
+      <div class="date">2014 – 2017（毕业于 2017 年）</div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">求职意向</h2>
+    <p>工业软件开发工程师 / MES 开发工程师 / C# 后端开发工程师 / 工业物联网应用开发工程师。</p>
+    <p>期望在重视工程质量与业务理解的团队中，参与设备接入、制造业业务系统及工业智能应用的持续建设。</p>
+  </section>
+
+  <div class="footer">赵森 · 工业软件开发工程师 · 本简历为可编辑初稿，项目完成情况、工作时间与技术熟练度请在投递前核实。</div>
+</main>
+</body>
+</html>
