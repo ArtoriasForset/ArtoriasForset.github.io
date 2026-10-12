@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>一只小猫</title>
+  <style>
+    :root { color-scheme: light; }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; min-height: 100vh; display: grid; place-items: center;
+      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at 50% 25%, #fff8ee, #f2e9df 70%);
+      color: #51453f;
+    }
+    main { text-align: center; padding: 28px; }
+    .picture {
+      width: min(340px, 78vw); aspect-ratio: 1; display: grid; place-items: center;
+      border-radius: 48% 52% 46% 54%; background: #fffdf9;
+      box-shadow: 0 22px 60px #8c6c4b22, inset 0 0 0 1px #eadfd2;
+    }
+    svg { width: 88%; height: 88%; }
+    h1 { margin: 24px 0 6px; font-size: 1.7rem; font-weight: 650; }
+    p { margin: 0; color: #8a776a; }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="picture" role="img" aria-label="一只奶油色的小猫，戴着粉色耳朵和胡须">
+      <svg viewBox="0 0 320 320" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="160" cy="265" rx="82" ry="13" fill="#e9ded2"/>
+        <path d="M91 128 L82 54 Q81 43 93 51 L137 83 Q160 74 183 83 L227 51 Q239 43 238 56 L229 130"
+              fill="#d9a978" stroke="#8e6246" stroke-width="5" stroke-linejoin="round"/>
+        <path d="M99 105 L94 67 L125 91 Z M221 105 L226 67 L195 91 Z" fill="#e99c9a"/>
+        <path d="M88 143 Q88 91 160 91 Q232 91 232 143 L225 205 Q219 252 160 253 Q101 252 95 205 Z"
+              fill="#f1c995" stroke="#8e6246" stroke-width="5"/>
+        <path d="M121 99 Q130 115 126 130 M199 99 Q190 115 194 130" fill="none" stroke="#b98254" stroke-width="6" stroke-linecap="round"/>
+        <ellipse cx="128" cy="159" rx="8" ry="12" fill="#4f493f"/>
+        <ellipse cx="192" cy="159" rx="8" ry="12" fill="#4f493f"/>
+        <circle cx="131" cy="155" r="2.5" fill="#fff"/>
+        <circle cx="195" cy="155" r="2.5" fill="#fff"/>
+        <path d="M151 177 Q160 185 169 177 Q160 195 151 177" fill="#c77d7c"/>
+        <path d="M160 190 Q151 203 141 195 M160 190 Q169 203 179 195" fill="none" stroke="#8e6246" stroke-width="3.5" stroke-linecap="round"/>
+        <path d="M112 181 L65 173 M112 191 L67 195 M208 181 L255 173 M208 191 L253 195"
+              stroke="#8e6246" stroke-width="3" stroke-linecap="round"/>
+        <path d="M138 222 Q160 232 182 222" fill="none" stroke="#d79b69" stroke-width="4" stroke-linecap="round"/>
+        <circle cx="111" cy="183" r="11" fill="#e99c9a" opacity=".45"/>
+        <circle cx="209" cy="183" r="11" fill="#e99c9a" opacity=".45"/>
+      </svg>
+    </div>
+    <h1>你好呀，喵～</h1>
+    <p>一只用 SVG 画出来的小猫 🐾</p>
+  </main>
+</body>
+</html>
