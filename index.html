@@ -82,6 +82,54 @@ footer{color:#6c6b63;border-color:#ded7ca}footer a{color:#315f7b}
 a:focus-visible,.project:focus-visible,.btn:focus-visible,nav a:focus-visible{outline:2px solid #557b72;outline-offset:4px}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.project,.btn{transition:none}}
 
+
+/* NieR:Automata-inspired monochrome tactical interface */
+:root{color-scheme:light;--bg:#d8d4c8;--panel:#e7e3d8;--panel2:#cfcbbe;--text:#34352f;--muted:#77766c;--line:rgba(65,64,55,.27);--blue:#55574e;--mint:#77796d}
+html{background:#d8d4c8;scroll-padding-top:24px}
+body{position:relative;isolation:isolate;background-color:#d8d4c8!important;background-image:linear-gradient(rgba(68,67,57,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(68,67,57,.035) 1px,transparent 1px)!important;background-size:24px 24px;color:#34352f;font-family:"Arial Narrow","Roboto Condensed","PingFang SC",sans-serif;letter-spacing:.025em}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;background:linear-gradient(90deg,transparent 0,rgba(245,242,232,.28) 49.8%,rgba(65,64,55,.035) 50%,transparent 50.2%),repeating-linear-gradient(0deg,transparent 0 3px,rgba(55,54,47,.018) 4px);opacity:.65}
+.wrap{width:min(1160px,calc(100% - 48px))}
+header{position:relative;border-bottom:1px solid #77766b;padding:18px 0}
+header:after{content:"SYSTEM / PERSONAL ARCHIVE";position:absolute;right:0;top:3px;font:9px/1.2 monospace;letter-spacing:.18em;color:#77766c}
+.brand{font-family:monospace;font-size:.94rem;letter-spacing:.12em;text-transform:uppercase}
+.brand-mark{border-radius:0!important;background:#44453e!important;color:#e7e3d8!important;width:34px;height:34px;clip-path:polygon(0 0,100% 0,100% 75%,75% 100%,0 100%)}
+nav{font-family:monospace;font-size:.78rem!important;letter-spacing:.08em;text-transform:uppercase;color:#6b6a60}
+nav a{padding:5px 0;border-bottom:1px solid transparent}
+nav a:hover{color:#34352f!important;border-bottom-color:#34352f}
+.hero{padding:92px 0 76px;max-width:900px;position:relative}
+.hero:before{content:"YoRHa / ARCHIVE 01";display:block;font:10px monospace;letter-spacing:.2em;color:#77766c;margin-bottom:24px}
+.hero:after{content:"";position:absolute;right:3%;top:88px;width:92px;height:92px;border:1px solid #77766b;transform:rotate(45deg);opacity:.4;box-shadow:0 0 0 10px #d8d4c8,0 0 0 11px #77766b}
+.eyebrow{border-radius:0;background:#c9c5b9!important;border:1px solid #8a887c!important;color:#55564e!important;font:10px monospace;letter-spacing:.16em;text-transform:uppercase;padding:7px 11px}
+.dot{background:#66685e!important;box-shadow:0 0 0 3px #a9a698}
+h1{font-weight:500;letter-spacing:-.045em;font-size:clamp(2.8rem,7vw,5.4rem);line-height:1.13;margin:24px 0}
+h1 span{color:#44453e!important;-webkit-text-fill-color:#44453e!important;background:none!important;border-bottom:2px solid #77766b;padding-bottom:5px}
+.lead{font-size:1.04rem;max-width:650px;color:#69695f!important}
+.btn{border-radius:0!important;border:1px solid #77766b!important;padding:12px 17px;font-family:monospace;font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;box-shadow:3px 3px 0 rgba(63,62,54,.13)}
+.btn-primary{background:#44453e!important;color:#e7e3d8!important;border-color:#44453e!important}
+.btn:hover{transform:translate(-1px,-1px)!important;box-shadow:5px 5px 0 rgba(63,62,54,.18)}
+.section-head{border-bottom:1px solid #a7a396;padding-bottom:14px;margin-bottom:20px}
+h2{font-size:1.24rem;letter-spacing:.04em;font-weight:600}
+.section-head p{color:#77766c!important;font-size:.86rem}
+.count{font:10px monospace;letter-spacing:.14em;color:#77766c!important}
+.project,.project:hover{background:rgba(231,227,216,.82)!important;border:1px solid #aaa799!important;border-radius:0!important;box-shadow:3px 3px 0 rgba(66,64,55,.09)!important}
+.project{min-height:310px;padding:25px;clip-path:none;position:relative}
+.project:before{content:"";position:absolute;top:0;left:0;width:26px;height:3px;background:#5c5d53}
+.project:hover{transform:translateY(-3px)!important;border-color:#68695e!important}
+.project-icon{border-radius:0!important;background:#d4d0c4!important;border:1px solid #a7a396!important;color:#494a42!important}
+.tag{border-radius:0!important;color:#64645b!important;border-color:#b1ad9f!important;font:10px monospace;letter-spacing:.06em}
+.project h3{font-weight:550;letter-spacing:.005em}
+.project p{color:#6b6a60!important}
+.tags span{border-radius:0!important;background:#dcd8cc!important;color:#626158!important;border-color:#c0bcaf!important;font:10px monospace}
+.project-link{color:#44453e!important;border-top:1px solid #cbc7ba;margin-top:22px;padding-top:15px;font:11px monospace;letter-spacing:.08em;text-transform:uppercase}
+.arrow{font-size:1.1rem}
+.about-card{border-radius:0!important;background:rgba(231,227,216,.8)!important;border:1px solid #aaa799!important;box-shadow:3px 3px 0 rgba(66,64,55,.08)}
+.focus-list span{border-radius:0!important;border-color:#b1ad9f!important;color:#55564e!important;font:10px monospace}
+footer{border-color:#a7a396!important;color:#77766c!important;font:10px monospace;letter-spacing:.05em}
+footer a{color:#4f5047!important}
+a:focus-visible,.project:focus-visible,.btn:focus-visible,nav a:focus-visible{outline:2px solid #494a42;outline-offset:4px}
+@media(max-width:700px){.wrap{width:calc(100% - 28px)}header:after{display:none}.hero{padding:62px 0 50px}.hero:after{width:42px;height:42px;top:70px;right:7%}h1{max-width:85%}.project{min-height:270px}}
+@media(prefers-reduced-motion:reduce){.project,.btn{transition:none}}
+
 </style>
 </head>
 <body>
@@ -92,7 +140,7 @@ a:focus-visible,.project:focus-visible,.btn:focus-visible,nav a:focus-visible{ou
 </header>
 <main>
   <section class="hero">
-    <div class="eyebrow"><span class="dot"></span> Personal project space</div>
+    <div class="eyebrow"><span class="dot"></span> Personal project space · 2B / ARCHIVE</div>
     <h1>Ideas into <span>working systems.</span></h1>
     <p class="lead">这里是我的个人项目空间，记录工业软件、边缘计算与 AI 的探索，也收藏一些轻松的小实验。持续构建，持续迭代。</p>
     <div class="hero-actions">
@@ -101,7 +149,7 @@ a:focus-visible,.project:focus-visible,.btn:focus-visible,nav a:focus-visible{ou
     </div>
   </section>
   <section id="writing" aria-labelledby="writing-title" style="margin-bottom:58px">
-    <div class="section-head"><div><h2 id="writing-title">最新文章</h2><p>关于工业智能、软件系统与物理世界的长期思考。</p></div><span class="count">FEATURED ESSAY</span></div>
+    <div class="section-head"><div><h2 id="writing-title">最新文章</h2><p>关于工业智能、软件系统与物理世界的长期思考。</p></div><span class="count">DATA LOG / 001</span></div>
     <a class="project" href="./industrial-agent-to-physical-ai.html" style="min-height:0;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:18px;align-items:center;padding:clamp(22px,4vw,34px);background:linear-gradient(120deg,rgba(28,46,75,.96),rgba(17,34,44,.94));">
       <div>
         <div class="project-top" style="justify-content:flex-start;flex-wrap:wrap"><span class="tag">ESSAY · INDUSTRIAL AI</span><span class="tag">约 8 分钟阅读</span></div>
@@ -124,7 +172,7 @@ a:focus-visible,.project:focus-visible,.btn:focus-visible,nav a:focus-visible{ou
     </a>
   </section>
   <section id="projects" aria-labelledby="projects-title">
-    <div class="section-head"><div><h2 id="projects-title">精选项目</h2><p>从这里进入每个独立页面。</p></div><span class="count">02 PROJECTS</span></div>
+    <div class="section-head"><div><h2 id="projects-title">精选项目</h2><p>从这里进入每个独立页面。</p></div><span class="count">INDEX / 02</span></div>
     <div class="projects">
       <a class="project" href="./architecture.html">
         <div class="project-top"><span class="project-icon" aria-hidden="true">⌘</span><span class="tag">Industrial · AI</span></div>
