@@ -130,6 +130,43 @@ a:focus-visible,.project:focus-visible,.btn:focus-visible,nav a:focus-visible{ou
 @media(max-width:700px){.wrap{width:calc(100% - 28px)}header:after{display:none}.hero{padding:62px 0 50px}.hero:after{width:42px;height:42px;top:70px;right:7%}h1{max-width:85%}.project{min-height:270px}}
 @media(prefers-reduced-motion:reduce){.project,.btn{transition:none}}
 
+
+/* Hard-square UI pass: angular panels, orthogonal grid, segmented HUD */
+:root{--bg:#d6d2c6;--line:#8f8d80}
+body{background-image:linear-gradient(rgba(68,67,57,.065) 1px,transparent 1px),linear-gradient(90deg,rgba(68,67,57,.065) 1px,transparent 1px)!important;background-size:16px 16px!important}
+.wrap{width:min(1200px,calc(100% - 56px))}
+header{padding:22px 0 17px}
+.brand-mark{clip-path:none!important;border-radius:0!important;box-shadow:inset 0 0 0 4px #44453e;border:1px solid #d6d2c6;outline:1px solid #44453e}
+.hero{padding:78px 0 65px;border-bottom:1px solid #a6a395}
+.hero:after{width:112px;height:112px;border:0;transform:none;opacity:.9;box-shadow:none;background:linear-gradient(90deg,transparent 48%,#77766b 49%,#77766b 50%,transparent 51%),linear-gradient(transparent 48%,#77766b 49%,#77766b 50%,transparent 51%);right:2%;top:88px}
+.eyebrow{border-radius:0!important;clip-path:none;padding:9px 14px;border-left:5px solid #44453e!important}
+.dot{border-radius:0!important;width:8px;height:8px;box-shadow:none!important}
+h1 span{border-bottom:0!important;display:inline-block;position:relative}
+h1 span:after{content:"";display:block;height:5px;background:#77766b;margin-top:8px;width:100%}
+.btn{border-radius:0!important;box-shadow:none!important;clip-path:none}
+.btn-primary{box-shadow:4px 4px 0 #aaa698!important}
+.section-head{display:flex;align-items:center;gap:20px;border-bottom:0;padding:0 0 0 13px;border-left:5px solid #44453e;min-height:48px}
+.section-head>div{flex:1}
+.count{border:1px solid #aaa698;padding:7px 10px;background:#d0ccbf}
+.projects{gap:12px}
+.project,.project:hover{border-radius:0!important;box-shadow:none!important;background:#e4e0d5!important;outline:1px solid transparent;outline-offset:-5px}
+.project{padding:25px 24px 22px;border:1px solid #a6a395!important;min-height:330px}
+.project:hover{outline-color:#77766b;transform:none!important;background:#eae6dc!important}
+.project:before{width:100%;height:4px;top:0;left:0;background:#55564e}
+.project-top{min-height:54px}
+.project-icon{width:54px;height:54px;border-radius:0!important;border:1px solid #9b998d!important;background:#d2cec1!important;font-size:1.4rem}
+.tag{border-radius:0!important;padding:6px 9px;line-height:1.2}
+.project h3{border-bottom:1px solid #c1bdae;padding-bottom:13px;margin-top:23px}
+.tags{gap:5px}
+.tags span{border-radius:0!important;padding:5px 7px}
+.project-link{border-top:1px solid #b9b5a8;padding-top:13px;margin-top:auto}
+.about{gap:12px}
+.about-card{border-radius:0!important;position:relative;padding:25px 24px 24px;border:1px solid #a6a395!important;box-shadow:none!important}
+.about-card:before{content:"";position:absolute;top:-1px;left:-1px;width:28px;height:5px;background:#55564e}
+.focus-list span{border-radius:0!important}
+footer{margin-top:0}
+@media(max-width:700px){.wrap{width:calc(100% - 28px)}.hero{padding:58px 0 45px}.hero:after{width:48px;height:48px;top:70px;right:4%}h1{max-width:92%}.projects{gap:10px}.project{min-height:280px;padding:20px}.section-head{align-items:flex-start}.count{font-size:9px}}
+
 </style>
 </head>
 <body>
@@ -150,7 +187,7 @@ a:focus-visible,.project:focus-visible,.btn:focus-visible,nav a:focus-visible{ou
   </section>
   <section id="writing" aria-labelledby="writing-title" style="margin-bottom:58px">
     <div class="section-head"><div><h2 id="writing-title">最新文章</h2><p>关于工业智能、软件系统与物理世界的长期思考。</p></div><span class="count">DATA LOG / 001</span></div>
-    <a class="project" href="./industrial-agent-to-physical-ai.html" style="min-height:0;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:18px;align-items:center;padding:clamp(22px,4vw,34px);background:linear-gradient(120deg,rgba(28,46,75,.96),rgba(17,34,44,.94));">
+    <a class="project" href="./industrial-agent-to-physical-ai.html" style="min-height:0;display:grid;grid-template-columns:minmax(0,1fr) 82px;gap:18px;align-items:center;padding:clamp(22px,4vw,34px);">
       <div>
         <div class="project-top" style="justify-content:flex-start;flex-wrap:wrap"><span class="tag">ESSAY · INDUSTRIAL AI</span><span class="tag">约 8 分钟阅读</span></div>
         <h3 style="font-size:clamp(1.35rem,3vw,1.9rem);line-height:1.35;margin:18px 0 10px">从工业 Agent 到 Physical AI：我对未来二十年的一些思考</h3>
@@ -158,9 +195,9 @@ a:focus-visible,.project:focus-visible,.btn:focus-visible,nav a:focus-visible{ou
         <div class="tags"><span>Industrial Agent</span><span>Physical AI</span><span>人机协作</span><span>控制权限</span></div>
         <div class="project-link" style="justify-content:flex-start;gap:12px"><span>阅读文章</span><span class="arrow" aria-hidden="true">→</span></div>
       </div>
-      <div aria-hidden="true" style="display:grid;place-items:center;width:clamp(64px,10vw,104px);aspect-ratio:1;border-radius:24px;background:linear-gradient(145deg,#8ab4ff20,#83e0c020);border:1px solid #8ab4ff35;font-size:clamp(2rem,5vw,3.2rem)">↗</div>
+      <div aria-hidden="true" style="display:grid;place-items:center;width:82px;aspect-ratio:1;border-radius:0;background:#d2cec1;border:1px solid #9b998d;font-size:clamp(2rem,5vw,3.2rem)">↗</div>
     </a>
-    <a class="project" href="./javascript-dust-to-dust.html" style="min-height:0;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:18px;align-items:center;padding:clamp(22px,4vw,34px);margin-top:16px;background:linear-gradient(120deg,rgba(28,46,75,.96),rgba(17,34,44,.94));">
+    <a class="project" href="./javascript-dust-to-dust.html" style="min-height:0;display:grid;grid-template-columns:minmax(0,1fr) 82px;gap:18px;align-items:center;padding:clamp(22px,4vw,34px);margin-top:12px;">
       <div>
         <div class="project-top" style="justify-content:flex-start;flex-wrap:wrap"><span class="tag">ESSAY · JAVASCRIPT</span><span class="tag">约 10 分钟阅读</span></div>
         <h3 style="font-size:clamp(1.35rem,3vw,1.9rem);line-height:1.35;margin:18px 0 10px">JavaScript：尘归尘，土归土</h3>
