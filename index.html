@@ -55,6 +55,33 @@ footer{border-top:1px solid var(--line);padding:23px 0 30px;color:#8190ab;font-s
 footer a{color:#b7c8e8}
 @media(max-width:700px){.wrap{width:min(100% - 28px,1120px)}header{padding:18px 0}nav{gap:13px;font-size:.84rem}.hero{padding:65px 0 48px}.projects,.about{grid-template-columns:1fr}.project{min-height:280px}.section-head{align-items:start;flex-direction:column}.count{display:none}footer{flex-direction:column;gap:5px}}
 @media(max-width:390px){nav{gap:9px}.brand{font-size:.9rem}.brand-mark{width:33px;height:33px}}
+
+/* Editorial light theme: restrained, readable, business-oriented */
+:root{color-scheme:light;--bg:#ffffff;--panel:#ffffff;--panel2:#f7f9fa;--text:#0f1419;--muted:#536471;--line:#e1e8ed;--blue:#1d9bf0;--mint:#1687c9}
+html{background:#fff}
+body{background:#fff!important;color:#0f1419;font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.7}
+header{border-bottom:1px solid #eff3f4}
+.brand-mark{border-radius:50%;background:#0f1419;color:#fff}
+nav{color:#536471}nav a:hover,.text-link:hover{color:#1d9bf0}
+.eyebrow{background:#f7f9fa;border-color:#e1e8ed;color:#536471}
+.dot{background:#1d9bf0;box-shadow:none}
+h1 span{background:none;color:#0f1419;-webkit-text-fill-color:#0f1419}
+.lead,.section-head p,.count,.project p,.about-card p{color:#536471}
+.btn{border-radius:999px;border-color:#cfd9de}
+.btn:hover{border-color:#1d9bf0}
+.btn-primary{background:#0f1419;color:#fff;border-color:#0f1419}
+.project,.project:hover{background:#fff!important;border-color:#e1e8ed;box-shadow:none;border-radius:18px}
+.project:hover{border-color:#aab8c2;transform:translateY(-2px)}
+.project-icon{background:#f7f9fa!important;border-color:#e1e8ed!important;color:#0f1419}
+.tag{color:#536471;border-color:#e1e8ed}
+.tags span{color:#536471;background:#f7f9fa;border-color:#e1e8ed}
+.project-link{color:#1d9bf0}
+.about-card{background:#fff;border-color:#e1e8ed;border-radius:16px}
+.focus-list span{color:#33434d;border-color:#e1e8ed}
+footer{color:#536471;border-color:#eff3f4}footer a{color:#1d9bf0}
+a:focus-visible,.project:focus-visible,.btn:focus-visible,nav a:focus-visible{outline:2px solid #1d9bf0;outline-offset:4px}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.project,.btn{transition:none}}
+
 </style>
 </head>
 <body>
