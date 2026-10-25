@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#d8d4c8">
+<meta name="description" content="FactoryHub — 面向物理世界的 AI 系统平台。连接设备、业务与智能决策，构建感知、控制、协调、决策一体化的 Physical AI System。">
+<title>FactoryHub — AI for the Physical World</title>
+<style>
+:root{color-scheme:light;--paper:#d8d4c8;--surface:#e9e5da;--surface2:#f1ede3;--ink:#34352f;--muted:#6d6c62;--line:#bdb9ac;--accent:#4e625b;--mono:ui-monospace,SFMono-Regular,Consolas,monospace}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:80px}body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.7;letter-spacing:.01em}a{color:inherit;text-decoration:none}.wrap{width:min(1180px,calc(100% - 48px));margin:auto}
+header{height:76px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{display:flex;align-items:center;gap:12px;font-weight:750;letter-spacing:.04em}.mark{width:36px;height:36px;display:grid;place-items:center;background:var(--ink);color:var(--surface2);font:700 13px var(--mono);clip-path:polygon(0 0,100% 0,100% 78%,78% 100%,0 100%)}nav{display:flex;gap:24px;font-size:.86rem;color:var(--muted)}nav a:hover,.back:hover{color:var(--ink);text-decoration:underline;text-underline-offset:5px}.back{font:11px var(--mono);letter-spacing:.08em;color:var(--muted)}
+.hero{padding:90px 0 72px;display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center;border-bottom:1px solid var(--line)}.eyebrow{font:11px var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:10px}.eyebrow:before{content:"";width:26px;height:3px;background:var(--accent)}h1{font-size:clamp(3rem,7vw,6.2rem);line-height:.98;letter-spacing:-.065em;font-weight:650;margin:24px 0}h1 span{display:block;font-weight:400;color:#77786b}.lead{max-width:650px;color:#5f6057;font-size:clamp(1.05rem,2vw,1.22rem);line-height:1.85}.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}.button{display:inline-flex;align-items:center;gap:14px;padding:12px 18px;border:1px solid #77776b;font-size:.9rem;font-weight:650;transition:background .2s,color .2s}.button.primary{background:var(--ink);color:var(--surface2);border-color:var(--ink)}.button:hover{background:var(--accent);color:#fff;border-color:var(--accent)}.hero-note{font:10px var(--mono);color:var(--muted);margin-top:18px;letter-spacing:.06em}
+.visual{border:1px solid #aaa799;background:#e3dfd3;padding:22px;position:relative;min-height:350px;box-shadow:7px 7px 0 #c5c1b5}.visual-top{display:flex;justify-content:space-between;gap:10px;padding-bottom:13px;border-bottom:1px solid var(--line);font:10px var(--mono);letter-spacing:.1em}.status{color:var(--accent)}.network{display:grid;grid-template-columns:1fr 34px 1fr;gap:9px;align-items:center;margin:20px 0}.node{border:1px solid #aaa799;background:#ede9de;padding:13px 10px;min-height:72px}.node b{display:block;font-size:.9rem;font-weight:650}.node small{display:block;color:var(--muted);font:10px var(--mono);margin-top:5px}.connector{text-align:center;color:var(--accent);font:18px var(--mono)}.core{border:1px solid var(--ink);background:var(--ink);color:#eeeade;padding:17px;margin:14px 0;text-align:center}.core b{font-size:1.15rem;letter-spacing:.08em}.core small{display:block;color:#c4c2b6;font:10px var(--mono);margin-top:4px}.layers{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}.layers span{border:1px solid #aaa799;padding:9px 5px;text-align:center;font:10px var(--mono);background:#ede9de}.visual-foot{display:flex;justify-content:space-between;margin-top:18px;font:9px var(--mono);color:var(--muted)}
+.section{padding:76px 0;border-bottom:1px solid var(--line)}.section-head{display:grid;grid-template-columns:.65fr 1.35fr;gap:35px;margin-bottom:34px}.kicker{font:10px var(--mono);letter-spacing:.14em;color:var(--accent);padding-top:9px}.section h2{font-size:clamp(2rem,4vw,3.4rem);line-height:1.12;letter-spacing:-.045em;font-weight:600;margin:0}.section-intro{max-width:700px;color:var(--muted);margin:16px 0 0}.principles{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.principle{padding:23px;border:1px solid var(--line);background:var(--surface);min-height:195px;position:relative}.num{font:10px var(--mono);color:var(--accent)}.principle h3{font-size:1.25rem;margin:22px 0 8px;font-weight:650}.principle p{font-size:.92rem;color:var(--muted);margin:0}.architecture{border:1px solid var(--line);background:var(--surface);padding:24px}.arch-row{display:grid;grid-template-columns:140px 1fr;gap:18px;padding:18px 0;border-bottom:1px solid var(--line)}.arch-row:last-child{border-bottom:0}.arch-label{font:10px var(--mono);letter-spacing:.09em;color:var(--accent);padding-top:4px}.arch-content h3{margin:0 0 5px;font-size:1.08rem}.arch-content p{margin:0;color:var(--muted);font-size:.92rem}.chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px}.chips span{border:1px solid #c1bdae;background:#efebe0;padding:4px 8px;font:10px var(--mono);color:#55564e}
+.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.flow-item{background:var(--surface);border:1px solid var(--line);padding:20px;min-height:155px;position:relative}.flow-item:not(:last-child):after{content:"→";position:absolute;right:-13px;top:20px;z-index:2;background:var(--paper);font:16px var(--mono);padding:0 2px;color:var(--accent)}.flow-item h3{margin:18px 0 6px;font-size:1.05rem}.flow-item p{font-size:.86rem;color:var(--muted);margin:0}.flow-item .num{font-size:10px}
+.capabilities{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.capability{border:1px solid var(--line);padding:22px;background:var(--surface)}.capability h3{margin:0 0 8px;font-size:1.1rem}.capability p{margin:0;color:var(--muted);font-size:.92rem}
+.statement{padding:40px;background:var(--ink);color:#eeeadf;display:grid;grid-template-columns:.5fr 1.5fr;gap:24px;align-items:start}.statement .kicker{color:#b6c3b8}.statement blockquote{margin:0;font-size:clamp(1.5rem,3vw,2.45rem);line-height:1.4;letter-spacing:-.03em}.statement p{color:#c6c4b9;margin:15px 0 0}
+footer{padding:25px 0 35px;display:flex;justify-content:space-between;gap:20px;color:var(--muted);font-size:.82rem}footer .signature{font:10px var(--mono);letter-spacing:.1em}
+@media(max-width:800px){.hero{grid-template-columns:1fr;padding:62px 0 50px;gap:35px}.visual{min-height:0}.section-head{grid-template-columns:1fr;gap:10px}.principles{grid-template-columns:1fr}.flow{grid-template-columns:repeat(2,1fr)}.flow-item:nth-child(2):after{display:none}.statement{grid-template-columns:1fr}.arch-row{grid-template-columns:100px 1fr}}
+@media(max-width:540px){.wrap{width:calc(100% - 30px)}header{height:66px}nav{gap:12px;font-size:.78rem}nav a:nth-child(2),nav a:nth-child(3){display:none}.back{font-size:9px}.hero{padding-top:52px}h1{font-size:clamp(2.8rem,14vw,4.5rem)}.visual{padding:14px;box-shadow:4px 4px 0 #c5c1b5}.node{padding:10px 7px}.layers span{font-size:8px}.section{padding:55px 0}.architecture{padding:14px}.arch-row{grid-template-columns:1fr;gap:7px}.flow,.capabilities{grid-template-columns:1fr}.flow-item{min-height:0}.flow-item:after{display:none!important}.statement{padding:25px 20px}footer{flex-direction:column;gap:8px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <a class="brand" href="./index.html"><span class="mark">FH</span><span>FactoryHub</span></a>
+  <nav aria-label="页面导航"><a href="#platform">平台</a><a href="#architecture">架构</a><a href="#principles">设计理念</a><a href="#capabilities">能力</a></nav>
+  <a class="back" href="./index.html">← BACK TO INDEX</a>
+</header>
+<main>
+<section class="hero">
+  <div>
+    <div class="eyebrow">PHYSICAL AI SYSTEM / 001</div>
+    <h1>AI for the<br><span>physical world.</span></h1>
+    <p class="lead">FactoryHub 是一个面向物理世界的 AI 系统平台。它将设备、任务、告警与业务流程组织为统一的数字模型，让工业现场不只是被连接，更能够被理解、协调与持续优化。</p>
+    <div class="actions"><a class="button primary" href="#architecture">探索平台架构 <span aria-hidden="true">↘</span></a><a class="button" href="./factory-dashboard.html">查看工厂运行面板 <span aria-hidden="true">↗</span></a></div>
+    <div class="hero-note">DOMAIN-DRIVEN · EDGE-READY · AGENT-ASSISTED</div>
+  </div>
+  <div class="visual" aria-label="FactoryHub 系统架构示意图">
+    <div class="visual-top"><span>FACTORYHUB / SYSTEM MAP</span><span class="status">● MODEL ONLINE</span></div>
+    <div class="network">
+      <div class="node"><b>Physical devices</b><small>PLC · IO · VISION</small></div><div class="connector">⇄</div><div class="node"><b>Industrial protocols</b><small>OPC UA · MQTT · MODBUS</small></div>
+    </div>
+    <div class="core"><b>FactoryHub</b><small>DOMAIN MODEL · ORCHESTRATION · OPERATIONS</small></div>
+    <div class="layers"><span>CONTROL</span><span>COORDINATION</span><span>DECISION</span></div>
+    <div class="visual-foot"><span>EDGE ↔ CLOUD</span><span>PHYSICAL AI / 01</span></div>
+  </div>
+</section>
+<section class="section" id="platform">
+  <div class="section-head"><div class="kicker">01 / THE PLATFORM</div><div><h2>从设备数据，到<br>可理解的现场系统。</h2><p class="section-intro">工业现场由不同品牌、协议和生命周期的设备组成。FactoryHub 以领域模型为中心，把实时状态、业务任务、告警事件与执行记录关联起来，为数字化管理和 Agent 推理提供可靠上下文。</p></div></div>
+  <div class="principles">
+    <article class="principle"><div class="num">01 — MODEL</div><h3>统一的领域模型</h3><p>以 DDD 组织 Device、Tag、Alarm、Task 与 Command，让设备状态和业务语义成为系统的一等概念。</p></article>
+    <article class="principle"><div class="num">02 — CONNECT</div><h3>开放的工业连接</h3><p>通过 OPC UA、MQTT、Modbus 等协议连接 PLC、远程 IO、视觉服务和智能设备，降低系统之间的集成壁垒。</p></article>
+    <article class="principle"><div class="num">03 — INTELLIGENCE</div><h3>有上下文的智能</h3><p>让 Agent 基于设备关系、任务进度、报警历史与运行约束分析问题，而不是只对孤立数值作出反应。</p></article>
+  </div>
+</section>
+<section class="section" id="architecture">
+  <div class="section-head"><div class="kicker">02 / SYSTEM ARCHITECTURE</div><div><h2>每一层各司其职。<br>系统协同，而非互相替代。</h2><p class="section-intro">FactoryHub 不试图用一个 AI 模型替代整个工业控制栈。它将确定性控制、环境感知、业务编排和智能决策分离，通过清晰的接口协同工作。</p></div></div>
+  <div class="architecture">
+    <div class="arch-row"><div class="arch-label">LAYER 04<br>DECISION</div><div class="arch-content"><h3>Agent · 分析与决策支持</h3><p>结合实时状态、历史事件与业务目标，辅助根因分析、方案比较、策略优化和异常解释。涉及实际操作的建议应经过权限检查、约束校验与适当审批。</p><div class="chips"><span>Context & Reasoning</span><span>Planning</span><span>Human Approval</span></div></div></div>
+    <div class="arch-row"><div class="arch-label">LAYER 03<br>ORCHESTRATION</div><div class="arch-content"><h3>FactoryHub · 业务编排与数字化管理</h3><p>以 ASP.NET Core 平台承载领域模型、任务流程、设备注册、告警管理、运行记录和系统 API，协调跨设备、跨工序的业务过程。</p><div class="chips"><span>DDD</span><span>ASP.NET Core</span><span>Web API</span><span>SQL</span></div></div></div>
+    <div class="arch-row"><div class="arch-label">LAYER 02<br>PERCEPTION</div><div class="arch-content"><h3>Vision services · 环境感知</h3><p>使用 YOLO、OpenCV 等视觉技术识别目标、检测状态并输出结构化结果，为上层系统提供环境信息；视觉推理与设备控制保持职责分离。</p><div class="chips"><span>YOLO</span><span>OpenCV</span><span>Detection Events</span></div></div></div>
+    <div class="arch-row"><div class="arch-label">LAYER 01<br>CONTROL</div><div class="arch-content"><h3>PLC / OpenPLC · 确定性控制</h3><p>由 PLC、驱动器及经过验证的控制逻辑负责实时 I/O、联锁、设备状态机与安全相关行为。FactoryHub 和 Agent 不取代现场安全回路或硬实时控制。</p><div class="chips"><span>PLC / OpenPLC</span><span>State Machine</span><span>Interlocks</span></div></div></div>
+    <div class="arch-row"><div class="arch-label">CONNECTIVITY<br>EDGE ↔ CLOUD</div><div class="arch-content"><h3>工业协议与边缘运行时</h3><p>边缘服务负责协议适配、数据采集、状态上报和受约束的命令转发；云端平台负责跨设备的业务视图与协调。具体部署可按现场规模和可靠性要求裁剪。</p><div class="chips"><span>OPC UA</span><span>MQTT</span><span>Modbus TCP/RTU</span><span>C# Worker Service</span></div></div></div>
+  </div>
+</section>
+<section class="section" id="principles">
+  <div class="section-head"><div class="kicker">03 / ENGINEERING PRINCIPLES</div><div><h2>控制自治。<br>系统协同。智能决策。</h2><p class="section-intro">清晰的责任边界，让传统自动化的可靠性与 AI 的适应性可以共同发挥作用。</p></div></div>
+  <div class="flow">
+    <article class="flow-item"><div class="num">01 / SENSE</div><h3>感知现场</h3><p>采集设备遥测、告警、视觉结果和运行事件，形成可追溯的状态事实。</p></article>
+    <article class="flow-item"><div class="num">02 / CONTROL</div><h3>安全执行</h3><p>由 PLC 与本地控制逻辑处理确定性动作、联锁与设备状态转换。</p></article>
+    <article class="flow-item"><div class="num">03 / COORDINATE</div><h3>组织业务</h3><p>FactoryHub 管理任务、资源、流程和跨设备协作，保留清晰的执行记录。</p></article>
+    <article class="flow-item"><div class="num">04 / DECIDE</div><h3>辅助决策</h3><p>Agent 解释复杂情况、比较可能方案，并在明确权限范围内提供决策支持。</p></article>
+  </div>
+</section>
+<section class="section" id="capabilities">
+  <div class="section-head"><div class="kicker">04 / DESIGNED TO GROW</div><div><h2>从一个单元，<br>逐步扩展到一座工厂。</h2><p class="section-intro">平台以可组合的领域能力为基础，先解决可验证的设备连接与业务问题，再逐步扩展智能分析和跨单元协作。</p></div></div>
+  <div class="capabilities">
+    <article class="capability"><h3>设备与数据</h3><p>设备注册、Tag 建模、遥测采集、状态追踪与连接健康管理。</p></article>
+    <article class="capability"><h3>任务与流程</h3><p>将设备动作放入有上下文的业务任务中，跟踪任务生命周期与执行结果。</p></article>
+    <article class="capability"><h3>告警与可观测性</h3><p>统一查看告警、事件、状态变化和命令历史，帮助定位问题并复盘过程。</p></article>
+    <article class="capability"><h3>Agent 与策略优化</h3><p>基于授权数据提供异常解释、趋势总结、方案建议和运营决策辅助。</p></article>
+  </div>
+</section>
+<section class="section">
+  <div class="statement"><div class="kicker">THE CORE IDEA</div><div><blockquote>让控制系统可靠地执行，让业务系统理解全局，让 AI 帮助人们看见更多可能。</blockquote><p>FactoryHub 的目标不是让 AI 无条件接管机器，而是建立一个能被理解、能被协调、能被审计，并能随着需求逐步演进的物理世界软件系统。</p></div></div>
+</section>
+</main>
+<footer><span>FactoryHub · Physical AI System</span><span class="signature">CONTROL AUTONOMY / SYSTEM COORDINATION / INTELLIGENT DECISION</span><a href="./index.html">返回项目首页 ↑</a></footer>
+</div>
+</body>
+</html>
